@@ -81,7 +81,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z git zsh-autosuggestions)
+plugins=(z git zsh-autosuggestions vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -120,6 +120,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 source $HOME/.config/broot/launcher/bash/br
 
+alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src ekidd/rust-musl-builder'
 alias us-keyboard='setxkbmap us'
 alias br-keyboard='setxkbmap br'
 alias ua-drop-caches='sudo paccache -rk3; paru -Sc --aur --noconfirm'

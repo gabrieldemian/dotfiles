@@ -10,10 +10,6 @@ return {
 		},
 	},
 	{
-		"folke/twilight.nvim",
-		opts = {},
-	},
-	{
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",
 		opts = {
