@@ -12,16 +12,12 @@ end
 return {
 	"nvimtools/none-ls.nvim",
 	config = function()
-		local none = require("null-ls")
-		none.setup({
+		local null_ls = require("null-ls")
+		null_ls.setup({
 			sources = {
-				none.builtins.formatting.stylua,
-				none.builtins.formatting.rustfmt,
-				none.builtins.formatting.rustywind,
-				none.builtins.formatting.eslint_d,
-				none.builtins.diagnostics.eslint_d.with({
-					diagnostics_format = "[eslint_d] #{m}\n(#{c})",
-				}),
+				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.formatting.rustfmt,
+				null_ls.builtins.formatting.rustywind,
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then

@@ -36,17 +36,20 @@ return {
 				end,
 				settings = {
 					["rust-analyzer"] = {
-            procMacro = {
-              enable = true
-            },
+            -- cache = {
+            --   warmup = true
+            -- },
+            -- procMacro = {
+            --   enable = true
+            -- },
 						diagnostics = {
 							enable = true,
 							disabled = { "unresolved-proc-macro" },
 							enableExperimental = true,
 						},
-						-- inlay_hints = {
-						-- 	auto = true,
-						-- },
+						inlay_hints = {
+							auto = true,
+						},
 					},
 				},
 				-- handlers = {

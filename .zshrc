@@ -120,6 +120,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 source $HOME/.config/broot/launcher/bash/br
 
+alias docker-clean='docker system prune --all -f --volumes'
 alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src ekidd/rust-musl-builder'
 alias us-keyboard='setxkbmap us'
 alias br-keyboard='setxkbmap br'
