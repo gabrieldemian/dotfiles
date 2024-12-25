@@ -1,7 +1,5 @@
 # home
 
-## What
-
 Common user configuration that can be shared for all hosts.
 
 ## Why

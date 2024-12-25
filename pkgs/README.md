@@ -1,6 +1,5 @@
 # pkgs
 
-## What?
 Custom packages / derivations.
 
 These packages will be merged to the `pkgs` attribute set.

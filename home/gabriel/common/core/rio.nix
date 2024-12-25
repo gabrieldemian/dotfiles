@@ -1,6 +1,9 @@
 {
   config.programs.rio = {
     enable = true;
+    package =
+      (builtins.getFlake "github:raphamorim/rio?rev=4d1fbde96e0d7f6ea3dd09c10beffd3c06fc0e0c")
+      .packages.x86_64-linux.rio;
     settings = {
       navigation.mode = "TopTab";
       padding-x = 10;
@@ -51,17 +54,32 @@
             {
               "with" = "control";
               key = "v";
-              action = "SplitVertically";
+              action = "SplitRight";
             }
             {
               "with" = "control";
               key = "h";
-              action = "SplitHorizontally";
+              action = "SplitDown";
             }
             {
               "with" = "control | shift";
-              key = "p";
-              action = "ClosePane";
+              key = "q";
+              action = "CloseSplitOrTab";
+            }
+            {
+              "with" = "control | shift";
+              key = "t";
+              action = "CreateTab";
+            }
+            {
+              "with" = "control | shift";
+              key = "o";
+              action = "SelectNextSplit";
+            }
+            {
+              "with" = "control | shift";
+              key = "i";
+              action = "SelectPrevSplit";
             }
           ]
           # keybindings for tab(index)
