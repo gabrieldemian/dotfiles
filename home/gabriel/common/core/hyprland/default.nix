@@ -52,7 +52,7 @@ in
         gaps_out = 12;
         border_size = 4;
         "col.active_border" = "rgba(c6a0f6ee) rgba(ed8796ee) 45deg";
-        "col.inactive_border" = "transparent";
+        # "col.inactive_border" = "transparent";
         layout = "dwindle";
       };
 
