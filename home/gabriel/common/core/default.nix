@@ -21,13 +21,10 @@
       "$HOME/.local/bin"
       "$HOME/.cargo/bin"
     ];
-    # sessionVariables = {
-    #   SHELL = "zsh";
-    #   TERM = "rio";
-    #   TERMINAL = "rio";
-    #   VISUAL = "nvim";
-    #   EDITOR = "nvim";
-    # };
+    sessionVariables = {
+      TERM = "rio";
+      TERMINAL = "rio";
+    };
     preferXdgDirectories = true; # whether to make programs use XDG directories whenever supported
   };
 

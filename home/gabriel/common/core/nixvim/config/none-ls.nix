@@ -23,8 +23,14 @@
         statix = {
           enable = true;
         };
+        markdownlint = {
+          enable = true;
+        };
       };
       formatting = {
+        mdformat = {
+          enable = true;
+        };
         nixfmt = {
           enable = true;
           package = pkgs.nixfmt-rfc-style;

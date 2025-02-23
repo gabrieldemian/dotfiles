@@ -23,10 +23,14 @@ in
 
       dotDir = ".config/zsh";
 
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "docker" "fzf" "ssh" ];
+      };
+
       history = {
-        save = 1000;
-        size = 1000;
-        path = "$HOME/.cache/zsh_history";
+        save = 10000;
+        size = 10000;
       };
 
       plugins = [
@@ -57,7 +61,6 @@ in
         r = "yazi";
         l = "eza -al --icons --group-directories-first";
         ll = "eza -a --icons --group-directories-first";
-        ssh = "kitty +kitten ssh";
         gs = "git status";
         gc = "git commit -m";
         gca = "git commit -a -m";

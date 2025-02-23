@@ -65,13 +65,6 @@
       };
       fidget = {
         enable = true;
-        extraOptions = {
-          notification = {
-            window = {
-              winblend = 0;
-            };
-          };
-        };
       };
       gitsigns.settings = {
         signs = {

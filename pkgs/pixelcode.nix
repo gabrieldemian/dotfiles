@@ -5,7 +5,7 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   name = "pixelcode";
-  dontConfigue = true;
+  dontConfigure = true;
   src = ../fonts/pixelcode.zip;
 
   unpackPhase = ''

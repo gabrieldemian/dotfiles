@@ -23,12 +23,23 @@
   ];
 
   home.packages = with pkgs; [
+    google-chrome
+    libreoffice-fresh
+    # foundry
+    discord
     cargo
-    goxel
+    mpv
+    slack
+    wayfarer
+    tor-browser
+    # goxel
     zathura
     ani-cli
     transmission_4-gtk
     webtorrent_desktop
+
+    (builtins.getFlake "github:fufexan/zen-browser-flake?rev=ef45869321b222cf004728f01e4ec6b4f7ea5f14")
+    .packages.x86_64-linux.zen
   ];
 
   # nixosModules.battery-notifier.enable = true;

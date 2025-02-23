@@ -2,7 +2,7 @@
   config.programs.rio = {
     enable = true;
     package =
-      (builtins.getFlake "github:raphamorim/rio?rev=4d1fbde96e0d7f6ea3dd09c10beffd3c06fc0e0c")
+      (builtins.getFlake "github:raphamorim/rio?rev=c89e640a672f8363c23b0022c84cf0485faa621d")
       .packages.x86_64-linux.rio;
     settings = {
       navigation.mode = "TopTab";
@@ -52,13 +52,13 @@
               action = "ToggleVIMode";
             }
             {
-              "with" = "control";
-              key = "v";
+              "with" = "control | shift";
+              key = "r";
               action = "SplitRight";
             }
             {
-              "with" = "control";
-              key = "h";
+              "with" = "command | shift";
+              key = "d";
               action = "SplitDown";
             }
             {

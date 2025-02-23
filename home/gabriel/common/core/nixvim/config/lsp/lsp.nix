@@ -26,14 +26,17 @@
   config.programs.nixvim.plugins.lsp = {
     enable = true;
     servers = {
+      solc = {
+        enable = true;
+      };
       cssls = {
         enable = true;
       };
       tailwindcss = {
         enable = true;
       };
-      solc = {
-        enable = false;
+      marksman = {
+        enable = true;
       };
       biome = {
         enable = true;
