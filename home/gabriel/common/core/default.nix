@@ -35,18 +35,18 @@
       extraPortals = with pkgs; [
         xdg-desktop-portal-hyprland
         xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
+        # xdg-desktop-portal-gtk
       ];
       config = {
-        common = {
-          default = [
-            "gtk"
-          ];
-        };
+        # common = {
+        #   default = [
+        #     "gtk"
+        #   ];
+        # };
         pantheon = {
           default = [
             "pantheon"
-            "gtk"
+            # "gtk"
           ];
           "org.freedesktop.impl.portal.Secret" = [
             "gnome-keyring"
@@ -55,7 +55,7 @@
         x-cinnamon = {
           default = [
             "xapp"
-            "gtk"
+            # "gtk"
           ];
         };
       };

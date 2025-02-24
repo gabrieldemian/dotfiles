@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -11,6 +12,11 @@
     ./common/core/fonts.nix
     ./common/core/git.nix
     ./common/core/gtk.nix
+
+    # inputs.nixosModules.battery-notifier
+
+    # ../../modules/nixos/battery-notifier.nix
+
     ./common/core/hyprland
     ./common/core/nixvim
     ./common/core/rio.nix
@@ -30,7 +36,6 @@
     cargo
     mpv
     slack
-    wayfarer
     tor-browser
     # goxel
     zathura
@@ -41,7 +46,4 @@
     (builtins.getFlake "github:fufexan/zen-browser-flake?rev=ef45869321b222cf004728f01e4ec6b4f7ea5f14")
     .packages.x86_64-linux.zen
   ];
-
-  # nixosModules.battery-notifier.enable = true;
-  # nixosModules.docker.enable = true;
 }

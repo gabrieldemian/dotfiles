@@ -1,22 +1,13 @@
 {
-  config,
   pkgs,
-  lib,
   ...
 }:
-with lib;
-let
-  cfg = config.battery-notifier;
-in
 {
-  options.battery-notifier = {
-    enable = mkEnableOption "enable battery-notifier";
-  };
-
   # Regularly check battery status
-  config.systemd.user.services.battery-notifier = mkIf cfg.enable {
+  config.systemd.user.services.battery-notifier = {
     enable = true;
     description = "Battery notifier";
+
     wants = [ "display-manager.service" ];
     wantedBy = [ "graphical-session.target" ];
     serviceConfig = {

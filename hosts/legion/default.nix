@@ -12,6 +12,7 @@
 
     outputs.nixosModules.ledger
     outputs.nixosModules.docker
+    outputs.nixosModules.battery-notifier
 
     (map configLib.relativeToRoot [
       # load users and other things common to all hosts
@@ -93,9 +94,21 @@
   services = {
     blueman.enable = true;
     dbus.enable = true;
+    greetd = {
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+          user = "greeter";
+        };
+      };
+    };
     xserver = {
       # for some reason this is enabled by default
-      displayManager.lightdm.enable = lib.mkForce false;
+      # displayManager.lightdm.enable = lib.mkForce false;
+      displayManager = {
+        lightdm.enable = lib.mkForce false;
+      };
       videoDrivers = [ "nvidia" ];
       enable = true;
       xkb.layout = "us";
