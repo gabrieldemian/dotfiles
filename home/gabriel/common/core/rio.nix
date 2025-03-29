@@ -13,7 +13,7 @@
       ];
       window = {
         blur = true;
-        opacity = 0.9;
+        opacity = 0.88;
       };
       fonts =
         let

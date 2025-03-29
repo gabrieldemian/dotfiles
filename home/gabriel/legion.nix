@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -14,7 +13,6 @@
     ./common/core/gtk.nix
 
     # inputs.nixosModules.battery-notifier
-
     # ../../modules/nixos/battery-notifier.nix
 
     ./common/core/hyprland
@@ -40,8 +38,10 @@
     # goxel
     zathura
     ani-cli
+    ani-skip
     transmission_4-gtk
     webtorrent_desktop
+    ollama-cuda
 
     (builtins.getFlake "github:fufexan/zen-browser-flake?rev=ef45869321b222cf004728f01e4ec6b4f7ea5f14")
     .packages.x86_64-linux.zen

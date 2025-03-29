@@ -26,24 +26,17 @@
   config.programs.nixvim.plugins.lsp = {
     enable = true;
     servers = {
-      solc = {
-        enable = true;
-      };
-      cssls = {
-        enable = true;
-      };
-      tailwindcss = {
-        enable = true;
-      };
-      marksman = {
-        enable = true;
-      };
-      biome = {
-        enable = true;
-      };
-      astro = {
-        enable = true;
-      };
+      astro.enable = true;
+      bashls.enable = true;
+      biome.enable = true;
+      clangd.enable = true;
+      cssls.enable = true;
+      eslint.enable = true;
+      marksman.enable = true;
+      nil-ls.enable = true;
+      ruff.enable = true;
+      tailwindcss.enable = true;
+      zls.enable = true;
       rust-analyzer = {
         enable = false;
         installCargo = true;
@@ -64,9 +57,6 @@
           };
         };
       };
-      clangd = {
-        enable = true;
-      };
       lua-ls = {
         enable = true;
         extraOptions = {
@@ -84,9 +74,6 @@
             };
           };
         };
-      };
-      nil-ls = {
-        enable = true;
       };
       tsserver = {
         enable = true;
@@ -122,15 +109,6 @@
             };
           };
         };
-      };
-      eslint = {
-        enable = true;
-      };
-      bashls = {
-        enable = true;
-      };
-      ruff = {
-        enable = true;
       };
     };
   };
