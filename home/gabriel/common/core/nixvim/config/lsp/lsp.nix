@@ -38,20 +38,22 @@
       tailwindcss.enable = true;
       zls.enable = true;
       rust-analyzer = {
-        enable = false;
+        enable = true;
         installCargo = true;
         installRustc = true;
         settings = {
-          # hint = {enable = true;};
+          hint = {
+            enable = true;
+          };
           cargo.features = "all";
           checkOnSave = true;
           check.command = "clippy";
-          # inlayHints = {
-          #   enable = true;
-          #   showParameterNames = true;
-          # parameterHintsPrefix = "<- ";
-          #   otherHintsPrefix = "=> ";
-          # };
+          inlayHints = {
+            enable = true;
+            showParameterNames = true;
+            parameterHintsPrefix = "<- ";
+            otherHintsPrefix = "=> ";
+          };
           procMacro = {
             enable = true;
           };

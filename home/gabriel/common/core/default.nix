@@ -137,6 +137,7 @@
 
   programs = {
     home-manager.enable = true;
+    neovim.defaultEditor = true;
   };
 
   # Nicely reload system units when changing configs

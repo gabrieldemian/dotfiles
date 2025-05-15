@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.catppuccin.homeModules.catppuccin
   ];
 
   config = {
@@ -39,7 +39,8 @@
     };
     home = {
       packages = with pkgs; [
-        breeze-icons
+        # breeze-icons
+        kdePackages.breeze-icons
       ];
       pointerCursor = {
         package = pkgs.bibata-cursors;

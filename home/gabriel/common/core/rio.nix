@@ -2,7 +2,7 @@
   config.programs.rio = {
     enable = true;
     package =
-      (builtins.getFlake "github:raphamorim/rio?rev=c89e640a672f8363c23b0022c84cf0485faa621d")
+      (builtins.getFlake "github:raphamorim/rio?rev=f261e7a679b4df07022e6e92f787aece851bb353")
       .packages.x86_64-linux.rio;
     settings = {
       navigation.mode = "TopTab";

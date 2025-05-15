@@ -65,6 +65,16 @@
         git.enable = true;
       };
 
+      environment = {
+        shells = [ pkgs.zsh ];
+
+        variables = {
+          EDITOR = "$(which nvim)";
+          SYSTEM_EDITOR = "$(which nvim)";
+          VISUAL = "$(which nvim)";
+        };
+      };
+
       environment.systemPackages = with pkgs; [
         # just
         # rsync

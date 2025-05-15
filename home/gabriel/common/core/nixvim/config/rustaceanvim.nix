@@ -1,7 +1,7 @@
 { config, ... }:
 {
   config.programs.nixvim.plugins.rustaceanvim = {
-    enable = true;
+    enable = false;
     settings.server = {
       standalone = false;
       cmd = [

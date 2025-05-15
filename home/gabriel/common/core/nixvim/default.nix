@@ -21,6 +21,7 @@
 
   config.programs.nixvim = {
     enable = true;
+    defaultEditor = true;
 
     # plugins that dont deserve their own module
     plugins = {
@@ -116,6 +117,4 @@
       };
     };
   };
-
-  config.programs.neovim.defaultEditor = true;
 }
