@@ -29,6 +29,9 @@
 
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
+
+    ghostty.url = "github:ghostty-org/ghostty";
+    ghostty.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     {
@@ -37,6 +40,7 @@
       nixos-hardware,
       home-manager,
       catppuccin,
+      ghostty,
       ...
     }@inputs:
     let

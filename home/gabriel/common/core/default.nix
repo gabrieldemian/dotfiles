@@ -22,8 +22,8 @@
       "$HOME/.cargo/bin"
     ];
     sessionVariables = {
-      TERM = "rio";
-      TERMINAL = "rio";
+      TERM = "ghostty";
+      TERMINAL = "ghostty";
     };
     preferXdgDirectories = true; # whether to make programs use XDG directories whenever supported
   };

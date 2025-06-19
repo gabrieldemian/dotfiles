@@ -21,8 +21,8 @@ in
       monitor = "eDP-1,2560x1600@240,auto,1";
       exec-once = "dunst & swww-daemon & waybar & ${wall} ${wallpapers}/frieren-dark.jpg &";
 
-      "$terminal" = "rio";
-      "$fileManager" = "rio -e yazi";
+      "$terminal" = "ghostty";
+      "$fileManager" = "ghostty -e yazi";
       "$menu" = "wofi";
       "$mod" = "SUPER";
 
@@ -111,7 +111,7 @@ in
           "$mod, Space, exec, $menu --show drun"
           "$mod, E, exec, [float;center;size 60% 60%] $fileManager"
           # floating terminal
-          "$mod SHIFT, Return, exec, [float;center;size 45% 35%] rio"
+          "$mod SHIFT, Return, exec, [float;center;size 45% 35%] ghostty"
           #volume
           ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
           ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"

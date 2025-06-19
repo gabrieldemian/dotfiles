@@ -2,7 +2,7 @@
   config.programs.kitty = {
     enable = true;
     settings = {
-      font_size = "13";
+      font_size = "15";
       font_family = "Pixel Code";
       bold_font = "auto";
       italic_font = "auto";

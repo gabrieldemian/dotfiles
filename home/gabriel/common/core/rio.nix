@@ -21,7 +21,7 @@
         in
         {
           inherit family;
-          size = 18;
+          size = 20;
           regular = {
             style = "Normal";
             inherit family;

@@ -28,6 +28,7 @@
     servers = {
       astro.enable = true;
       bashls.enable = true;
+      volar.enable = true;
       biome.enable = true;
       clangd.enable = true;
       cssls.enable = true;
@@ -77,9 +78,10 @@
           };
         };
       };
-      tsserver = {
+      ts-ls = {
         enable = true;
         filetypes = [
+          "vue"
           "javascript"
           "javascriptreact"
           "typescript"

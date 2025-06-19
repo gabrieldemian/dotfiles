@@ -5,8 +5,8 @@
       global = {
         monitor = 0;
         follow = "none";
-        width = 300;
-        height = "(0,300)";
+        width = 600;
+        height = "(0,200)";
         origin = "top-right";
         offset = "0x30";
         scale = 0;
