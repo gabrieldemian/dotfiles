@@ -16,10 +16,22 @@
         font-size = "15"
         font-family = "Pixel Code"
         # theme = dark:catppuccin-macchiato,light:catppuccin-latte
+        window-theme = ghostty
+        adw-toolbar-style = flat
         theme = catppuccin-macchiato
         background-opacity = 0.88
         background-blur = 20
         window-padding-x = 5
+
+        keybind = "ctrl+super+h=goto_split:left"
+        keybind = "ctrl+super+l=goto_split:right"
+        keybind = "ctrl+super+j=goto_split:down"
+        keybind = "ctrl+super+k=goto_split:up"
+
+        keybind = "ctrl+super+shift+h=resize_split:left,10"
+        keybind = "ctrl+super+shift+l=resize_split:right,10"
+        keybind = "ctrl+super+shift+j=resize_split:down,10"
+        keybind = "ctrl+super+shift+k=resize_split:up,10"
       '';
     };
 
