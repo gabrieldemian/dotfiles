@@ -19,10 +19,10 @@ in
 
     settings = {
       monitor = "eDP-1,2560x1600@240,auto,1";
-      exec-once = "dunst & swww-daemon & waybar & ${wall} ${wallpapers}/frieren-dark.jpg &";
+      exec-once = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP & dunst & swww-daemon & waybar & ${wall} ${wallpapers}/frieren-dark.jpg & ${scripts}/fix-portal.sh & ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false &";
 
-      "$terminal" = "ghostty";
-      "$fileManager" = "ghostty -e yazi";
+      "$terminal" = "ghostty --gtk-single-instance=true";
+      "$fileManager" = "ghostty --gtk-single-instance=true -e yazi";
       "$menu" = "wofi";
       "$mod" = "SUPER";
 
@@ -60,7 +60,7 @@ in
       decoration = {
         rounding = 10;
         blur = {
-          enabled = true;
+          enabled = false;
           size = 5;
           passes = 2;
         };
@@ -87,6 +87,7 @@ in
       gestures.workspace_swipe = "off";
 
       misc.force_default_wallpaper = -1;
+      misc.vfr = true;
 
       device = {
         name = "epic-mouse-v1";
