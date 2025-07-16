@@ -26,15 +26,16 @@
     # plugins that dont deserve their own module
     plugins = {
       floaterm.enable = true;
+      web-devicons.enable = true;
       # TeXpresso %
       # texpresso.enable = true;
       indent-blankline.enable = true;
       gitsigns.enable = true;
-      surround.enable = true;
+      vim-surround.enable = true;
       nvim-autopairs.enable = true;
       autoclose.enable = true;
       comment.enable = true;
-      nvim-colorizer.enable = true;
+      colorizer.enable = true;
       leap.enable = true;
       luasnip.enable = true;
       ts-autotag.enable = true;

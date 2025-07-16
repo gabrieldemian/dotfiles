@@ -33,12 +33,12 @@
       clangd.enable = true;
       cssls.enable = true;
       eslint.enable = true;
-      marksman.enable = true;
-      nil-ls.enable = true;
+      # marksman.enable = true;
+      nil_ls.enable = true;
       ruff.enable = true;
       tailwindcss.enable = true;
       zls.enable = true;
-      rust-analyzer = {
+      rust_analyzer = {
         enable = true;
         installCargo = true;
         installRustc = true;
@@ -60,7 +60,7 @@
           };
         };
       };
-      lua-ls = {
+      lua_ls = {
         enable = true;
         extraOptions = {
           settings = {
@@ -78,7 +78,7 @@
           };
         };
       };
-      ts-ls = {
+      ts_ls = {
         enable = true;
         filetypes = [
           "vue"

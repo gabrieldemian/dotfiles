@@ -13,9 +13,6 @@
     ./common/core/git.nix
     ./common/core/gtk.nix
 
-    # inputs.nixosModules.battery-notifier
-    # ../../modules/nixos/battery-notifier.nix
-
     ./common/core/hyprland
     ./common/core/nixvim
     ./common/core/rio.nix
@@ -31,8 +28,10 @@
   services.gammastep = {
     enable = true;
     provider = "manual";
-    latitude = 38.966667;
-    longitude = 16.299999;
+    latitude = 48.85661400;
+    longitude = 2.35222190;
+    temperature.day = 6000;
+    temperature.night = 2000;
   };
 
   home.packages = with pkgs; [
@@ -52,10 +51,6 @@
     webtorrent_desktop
     ollama-cuda
     feh
-
-    # (builtins.getFlake "github:fufexan/zen-browser-flake?rev=ef45869321b222cf004728f01e4ec6b4f7ea5f14")
-    # .packages.x86_64-linux.zen
-
     inputs.zen-browser.packages.${pkgs.system}.default
   ];
 }

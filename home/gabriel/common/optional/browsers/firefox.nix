@@ -9,7 +9,7 @@ in
 
     betterfox = {
       enable = true;
-      version = "128.0"; # Set version here, defaults to main branch
+      version = "main"; # Set version here, defaults to main branch
     };
 
     # Refer to https://mozilla.github.io/policy-templates or `about:policies#documentation` in firefox

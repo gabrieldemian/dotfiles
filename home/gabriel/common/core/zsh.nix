@@ -70,7 +70,7 @@ in
         gf = "git fetch --all";
       };
 
-      initExtra = ''
+      initContent = ''
         export XDG_CONFIG_HOME="$HOME/.config";
         function yy() {
         	if [ -n "$YAZI_LEVEL" ]; then

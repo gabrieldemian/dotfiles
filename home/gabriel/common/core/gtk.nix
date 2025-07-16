@@ -9,15 +9,16 @@
   ];
 
   config = {
+    catppuccin.gtk = {
+      enable = true;
+      flavor = "mocha";
+      accent = "mauve";
+      size = "standard";
+      tweaks = [ "normal" ];
+    };
+
     gtk = {
       enable = true;
-      catppuccin = {
-        enable = true;
-        flavor = "mocha";
-        accent = "mauve";
-        size = "standard";
-        tweaks = [ "normal" ];
-      };
       gtk3.extraConfig = {
         gtk-xft-antialias = 1;
         gtk-xft-hinting = 1;

@@ -19,7 +19,7 @@
         window-theme = ghostty
         adw-toolbar-style = flat
         theme = catppuccin-macchiato
-        background-opacity = 0.88
+        background-opacity = 0.77
         background-blur = 20
         window-padding-x = 5
 
