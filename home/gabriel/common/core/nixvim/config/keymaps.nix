@@ -1,6 +1,21 @@
 { ... }:
 {
   config.programs.nixvim.keymaps = [
+    # rustacean
+    {
+      mode = [ "n" ];
+      key = "<leader>rt";
+      action = "<cmd>:RustLsp testables<cr>";
+      options.silent = true;
+    }
+    # add border on hover
+    {
+      mode = [ "n" ];
+      key = "K";
+      action = "<cmd>lua vim.lsp.buf.hover({border = \"rounded\", width = 70})<cr>";
+      options.silent = true;
+    }
+
     # move in insert mode with hjkl
     {
       mode = [
@@ -9,6 +24,26 @@
       ];
       key = "<C-h>";
       action = "<Left>";
+    }
+    {
+      mode = "n";
+      key = "<C-j>";
+      action = "<cmd>lua vim.diagnostic.goto_next()<cr>";
+    }
+    {
+      mode = "n";
+      key = "<leader>ca";
+      action = "<cmd>lua vim.lsp.buf.code_action()<cr>";
+    }
+    {
+      mode = "n";
+      key = "<C-k>";
+      action = "<cmd>lua vim.buf.lsp.signature_help({border=\"rounded\"})<cr>";
+    }
+    {
+      mode = "n";
+      key = "<C-k>";
+      action = "<cmd>lua vim.diagnostic.goto_prev()<cr>";
     }
     {
       mode = [
@@ -87,56 +122,6 @@
       mode = "n";
       key = "<leader>f";
       action = "<cmd>lua vim.lsp.buf.format()<cr>";
-    }
-    # lspsaga keys
-    {
-      key = "<leader>ca";
-      action = "<cmd>Lspsaga code_action<cr>";
-    }
-    {
-      key = "<leader>bf";
-      action = "<cmd>Lspsaga show_buf_diagnostics<cr>";
-    }
-    {
-      key = "<C-j>";
-      action = "<cmd>Lspsaga diagnostic_jump_next<cr>";
-    }
-    {
-      key = "<leader>d";
-      action = "<cmd>Lspsaga show_line_diagnostics<cr>";
-    }
-    {
-      key = "gT";
-      action = "<cmd>Lspsaga goto_type_definition<cr>";
-    }
-    {
-      key = "gt";
-      action = "<cmd>Lspsaga peek_type_definition<cr>";
-    }
-    {
-      key = "gD";
-      action = "<cmd>Lspsaga goto_definition<cr>";
-    }
-    {
-      key = "gd";
-      action = "<cmd>Lspsaga peek_definition<cr>";
-    }
-    {
-      key = "K";
-      action = "<cmd>Lspsaga hover_doc<cr>";
-    }
-    {
-      mode = [ "x" ];
-      key = "<C-k>";
-      action = "<cmd>lua vim.lsp.buf.signature_help<cr>";
-    }
-    {
-      key = "<leader>rn";
-      action = "<cmd>Lspsaga rename<cr>";
-    }
-    {
-      key = "gh";
-      action = "<cmd>Lspsaga finder<cr>";
     }
     # bufferline keys
     {

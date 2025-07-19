@@ -1,30 +1,10 @@
 { ... }:
 {
-  config.programs.nixvim.extraConfigLua = ''
-    local _border = "rounded"
-
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-      vim.lsp.handlers.hover, {
-        border = _border
-      }
-    )
-
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-      vim.lsp.handlers.signature_help, {
-        border = _border
-      }
-    )
-
-    vim.diagnostic.config{
-      float={border=_border}
-    };
-
-    require('lspconfig.ui.windows').default_options = {
-      border = _border
-    }
-  '';
+  config.programs.nixvim.diagnostic.settings.virtual_text = true;
   config.programs.nixvim.plugins.lsp = {
     enable = true;
+    inlayHints = false;
+
     servers = {
       astro.enable = true;
       bashls.enable = true;
@@ -39,7 +19,7 @@
       tailwindcss.enable = true;
       zls.enable = true;
       rust_analyzer = {
-        enable = true;
+        enable = false;
         installCargo = true;
         installRustc = true;
         settings = {

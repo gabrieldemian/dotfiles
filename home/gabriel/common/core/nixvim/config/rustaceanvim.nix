@@ -1,16 +1,19 @@
 { config, ... }:
 {
   config.programs.nixvim.plugins.rustaceanvim = {
-    enable = false;
+    enable = true;
+
     settings.server = {
       standalone = false;
-      cmd = [
-        "rustup"
-        "run"
-        "nightly"
-        "rust-analyzer"
-      ];
+      # cmd = [
+      #   "rustup"
+      #   "run"
+      #   "nightly"
+      #   "rust-analyzer"
+      # ];
+
       enable = true;
+
       default_settings = {
         rust_analyzer = {
           check = {
