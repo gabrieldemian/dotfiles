@@ -15,6 +15,11 @@
       action = "<cmd>lua vim.lsp.buf.hover({border = \"rounded\", width = 70})<cr>";
       options.silent = true;
     }
+    {
+      mode = [ "n" ];
+      key = "<leader>rn";
+      action = "<cmd>lua vim.lsp.buf.rename()<cr>";
+    }
 
     # move in insert mode with hjkl
     {
@@ -34,11 +39,6 @@
       mode = "n";
       key = "<leader>ca";
       action = "<cmd>lua vim.lsp.buf.code_action()<cr>";
-    }
-    {
-      mode = "n";
-      key = "<C-k>";
-      action = "<cmd>lua vim.buf.lsp.signature_help({border=\"rounded\"})<cr>";
     }
     {
       mode = "n";
