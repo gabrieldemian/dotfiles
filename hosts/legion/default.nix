@@ -100,6 +100,7 @@
   };
 
   services = {
+    cloudflare-warp.enable = true;
     blueman.enable = true;
     dbus.enable = true;
     greetd = {

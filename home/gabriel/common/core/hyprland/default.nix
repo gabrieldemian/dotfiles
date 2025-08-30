@@ -60,7 +60,7 @@ in
       decoration = {
         rounding = 10;
         blur = {
-          enabled = false;
+          enabled = true;
           size = 5;
           passes = 2;
         };

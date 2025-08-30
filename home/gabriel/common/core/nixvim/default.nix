@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
@@ -16,11 +16,23 @@
     ./config/rustaceanvim.nix
     ./config/cmp.nix
     ./config/keymaps.nix
+    ./config/dap.nix
   ];
 
   config.programs.nixvim = {
     enable = true;
     defaultEditor = true;
+
+    extraPackages =
+      with pkgs;
+      [
+        coreutils
+        lldb
+        netcoredbg
+      ]
+      ++ lib.optionals pkgs.stdenv.isLinux [
+        pkgs.gdb
+      ];
 
     extraConfigLua = ''
       local bufnr = vim.api.nvim_get_current_buf()

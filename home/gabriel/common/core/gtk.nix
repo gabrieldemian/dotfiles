@@ -9,14 +9,6 @@
   ];
 
   config = {
-    catppuccin.gtk = {
-      enable = true;
-      flavor = "mocha";
-      accent = "mauve";
-      size = "standard";
-      tweaks = [ "normal" ];
-    };
-
     gtk = {
       enable = true;
       gtk3.extraConfig = {
