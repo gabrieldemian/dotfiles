@@ -1,14 +1,11 @@
 { config, inputs, ... }:
-let
-  home_dir = config.home.homeDirectory;
-in
 {
-  imports = [ inputs.betterfox.homeManagerModules.betterfox ];
+  imports = [ inputs.betterfox.homeModules.betterfox ];
   programs.firefox = {
     enable = true;
 
     betterfox = {
-      enable = true;
+      enable = false;
       version = "main"; # Set version here, defaults to main branch
     };
 
@@ -84,7 +81,7 @@ in
       isDefault = true;
 
       betterfox = {
-        enable = true;
+        enable = false;
         enableAllSections = true;
 
         # To enable/disable specific sections

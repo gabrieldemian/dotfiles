@@ -9,7 +9,7 @@
 }:
 {
   # import everything from core
-  imports = (configLib.scanPaths ./.) ++ (builtins.attrValues outputs.homeManagerModules);
+  imports = (configLib.scanPaths ./.) ++ (builtins.attrValues outputs.homeModules);
 
   services.ssh-agent.enable = true;
 

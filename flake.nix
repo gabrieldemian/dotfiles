@@ -13,9 +13,6 @@
 
     ## -- utilities --
 
-    betterfox.url = "github:HeitorAugustoLN/betterfox-nix";
-    betterfox.inputs.nixpkgs.follows = "nixpkgs";
-
     zen-browser.url = "github:youwen5/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -64,7 +61,7 @@
     {
       # -- modules and stuff --
       nixosModules = import ./modules/nixos;
-      homeManagerModules = import ./modules/home-manager;
+      homeModules = import ./modules/home-manager;
 
       # pkgs that can be built detachedly like:
       # nix build .#pixelcode
