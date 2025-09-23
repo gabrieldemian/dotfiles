@@ -15,10 +15,10 @@
       text = ''
         font-size = "15"
         font-family = "Pixel Code"
-        # theme = dark:catppuccin-macchiato,light:catppuccin-latte
         window-theme = ghostty
         adw-toolbar-style = flat
-        theme = catppuccin-macchiato
+        # theme = dark:catppuccin-macchiato,light:catppuccin-latte
+        theme = Catppuccin Macchiato
         background-opacity = 0.77
         background-blur = 20
         window-padding-x = 5

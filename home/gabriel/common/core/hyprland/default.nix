@@ -84,7 +84,7 @@ in
         preserve_split = "yes";
       };
 
-      gestures.workspace_swipe = "off";
+      # gestures.workspace_swipe = "off";
 
       misc.force_default_wallpaper = -1;
       misc.vfr = true;
