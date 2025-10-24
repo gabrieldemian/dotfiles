@@ -41,28 +41,21 @@
 
     sessionVariables = {
       NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
-      WLR_NO_HARDWARE_CURSORS = "1"; # Fix cursor rendering issue on wlr nvidia.
-
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
-
       GBM_BACKEND = "nvidia";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       LIBVA_DRIVER_NAME = "nvidia";
       __GL_GSYNC_ALLOWED = "1";
       __GL_VRR_ALLOWED = "0";
       WLR_DRM_NO_ATOMIC = "1";
-
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt5ct";
-
       GDK_SCALE = "2";
-
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
-
       NVD_BACKEND = "direct";
     };
   };
@@ -92,6 +85,7 @@
 
   networking = {
     hostName = "legion";
+    networkmanager.enable = true;
     nameservers = [
       "1.1.1.1#one.one.one.one"
       "1.0.0.1#one.one.one.one"
@@ -165,6 +159,11 @@
       powerManagement.finegrained = false;
       open = false;
       package = config.boot.kernelPackages.nvidiaPackages.beta;
+      prime = {
+        sync.enable = true;
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
     };
   };
 

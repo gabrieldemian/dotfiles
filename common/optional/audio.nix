@@ -16,8 +16,7 @@
 
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)
-      # playerctl # cli utility and lib for controlling media players
-      # pamixer # cli pulseaudio sound mixer
+      playerctl # cli utility and lib for controlling media players
       pwvucontrol
       easyeffects
       ;

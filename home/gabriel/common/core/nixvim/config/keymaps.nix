@@ -186,27 +186,37 @@
     }
     # gitsigns keys
     {
-      key = "<leader>gs";
+      key = "<leader>gsh";
       action = ":Gitsigns stage_hunk<cr>";
       options.silent = true;
     }
     {
-      key = "<leader>gu";
+      key = "<leader>gSh";
       action = ":Gitsigns undo_stage_hunk<cr>";
       options.silent = true;
     }
     {
-      key = "<leader>gS";
+      key = "<leader>gsb";
       action = ":Gitsigns stage_buffer<cr>";
       options.silent = true;
     }
     {
-      key = "<leader>gr";
+      key = "<leader>gSb";
+      action = ":Gitsigns undo_stage_buffer<cr>";
+      options.silent = true;
+    }
+    {
+      key = "<leader>grb";
       action = ":Gitsigns reset_buffer<cr>";
       options.silent = true;
     }
     {
-      key = "<leader>gp";
+      key = "<leader>grh";
+      action = ":Gitsigns reset_hunk<cr>";
+      options.silent = true;
+    }
+    {
+      key = "<leader>gph";
       action = ":Gitsigns preview_hunk<cr>";
       options.silent = true;
     }

@@ -29,11 +29,8 @@ in
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
-        "XDG_SESSION_TYPE,wayland"
-        "GBM_BACKEND,nvidia-drm"
         "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         "LIBVA_DRIVER_NAME,nvidia"
-        "WLR_DRM_NO_ATOMIC,1"
         "ELECTRON_OZONE_PLATFORM_HINT,auto"
       ];
 

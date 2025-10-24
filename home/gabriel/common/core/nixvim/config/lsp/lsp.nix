@@ -8,7 +8,6 @@
     servers = {
       astro.enable = true;
       bashls.enable = true;
-      volar.enable = true;
       biome.enable = true;
       clangd.enable = true;
       cssls.enable = true;

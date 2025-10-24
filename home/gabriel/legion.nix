@@ -35,6 +35,11 @@
   };
 
   home.packages = with pkgs; [
+    hexchat
+    weechat
+    qbittorrent-enhanced
+    nicotine-plus
+    cross-seed
     google-chrome
     libreoffice-fresh
     # foundry
