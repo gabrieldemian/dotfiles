@@ -35,26 +35,21 @@
   };
 
   home.packages = with pkgs; [
+    qbittorrent-nox
     hexchat
     weechat
-    qbittorrent-enhanced
     nicotine-plus
     cross-seed
     google-chrome
     libreoffice-fresh
-    # foundry
     discord
     cargo
     mpv
     slack
     tor-browser
-    # goxel
     zathura
     ani-cli
-    ani-skip
     transmission_4-gtk
-    webtorrent_desktop
-    ollama-cuda
     feh
     inputs.zen-browser.packages.${pkgs.system}.default
   ];

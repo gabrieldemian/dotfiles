@@ -90,6 +90,23 @@
       "1.1.1.1#one.one.one.one"
       "1.0.0.1#one.one.one.one"
     ];
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        51413
+        8769
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 51413;
+          to = 51414;
+        }
+        {
+          from = 8769;
+          to = 8770;
+        }
+      ];
+    };
   };
 
   security = {
@@ -98,6 +115,7 @@
 
   services = {
     cloudflare-warp.enable = false;
+
     resolved = {
       enable = true;
       dnssec = "true";
