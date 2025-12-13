@@ -1,4 +1,10 @@
-{ ... }:
+{ inputs, ... }:
+let
+  zig = inputs.zig-overlay.packages.x86_64-linux.master;
+  zls = inputs.zls-overlay.packages.x86_64-linux.zls.overrideAttrs (old: {
+    nativeBuildInputs = [ zig ];
+  });
+in
 {
   config.programs.nixvim.diagnostic.settings.virtual_text = true;
   config.programs.nixvim.plugins.lsp = {
@@ -12,11 +18,17 @@
       clangd.enable = true;
       cssls.enable = true;
       eslint.enable = true;
-      # marksman.enable = true;
       nil_ls.enable = true;
       ruff.enable = true;
       tailwindcss.enable = true;
-      zls.enable = true;
+      zls = {
+        enable = true;
+        package = zls;
+        settings = {
+          enable_build_on_save = true;
+          build_on_save_step = "check";
+        };
+      };
       rust_analyzer = {
         enable = false;
         installCargo = true;

@@ -35,9 +35,13 @@
   };
 
   home.packages = with pkgs; [
-    qbittorrent-nox
-    hexchat
-    weechat
+    irssi
+    qbittorrent
+    retroarch-full
+    retroarch-assets
+    lutris
+    protonup-rs
+    winePackages.wayland
     nicotine-plus
     cross-seed
     google-chrome
@@ -49,7 +53,6 @@
     tor-browser
     zathura
     ani-cli
-    transmission_4-gtk
     feh
     inputs.zen-browser.packages.${pkgs.system}.default
   ];
