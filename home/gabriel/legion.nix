@@ -15,7 +15,6 @@
 
     ./common/core/hyprland
     ./common/core/nixvim
-    ./common/core/rio.nix
     ./common/core/ghostty.nix
     ./common/core/starship.nix
     ./common/core/waybar
@@ -41,8 +40,8 @@
     retroarch-assets
     lutris
     protonup-rs
-    winePackages.wayland
-    nicotine-plus
+    winePackages.waylandFull
+    winetricks
     cross-seed
     google-chrome
     libreoffice-fresh
