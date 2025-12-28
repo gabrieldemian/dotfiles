@@ -8,11 +8,97 @@
       action = "<cmd>:RustLsp testables<cr>";
       options.silent = true;
     }
-    # add border on hover
+
+    # snacks
+    {
+      mode = [ "n" ];
+      key = "s";
+      action = "<cmd>lua require(\"flash\").jump()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "r";
+      action = "<cmd>lua require(\"flash\").treesitter_search()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "ff";
+      action = "<cmd>lua require(\"snacks\").picker.files()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "gr";
+      action = "<cmd>lua require(\"snacks\").picker.lsp_references()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "gd";
+      action = "<cmd>lua require(\"snacks\").picker.lsp_declarations()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "gi";
+      action = "<cmd>lua require(\"snacks\").picker.lsp_implementations()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "gs";
+      action = "<cmd>lua require(\"snacks\").picker.lsp_symbols()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "gS";
+      action = "<cmd>lua require(\"snacks\").picker.lsp_workspace_symbols()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "<leader>s";
+      action = "<cmd>lua require(\"snacks\").scratch()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "<leader>fp";
+      action = "<cmd>lua require(\"snacks\").picker.projects()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "fc";
+      action = "<cmd>lua require(\"snacks\").picker.files({ cwd = vim.fn.stdpath(\"config\") })<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "fg";
+      action = "<cmd>lua require(\"snacks\").picker.grep()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "<leader>e";
+      action = "<cmd>lua require(\"snacks\").explorer()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "ff";
+      action = "<cmd>lua require(\"snacks\").picker.files()<cr>";
+      options.silent = true;
+    }
     {
       mode = [ "n" ];
       key = "K";
-      action = "<cmd>lua vim.lsp.buf.hover({border = \"rounded\", width = 70})<cr>";
+      # action = "<cmd>lua vim.lsp.buf.hover({border = \"rounded\", width = 70})<cr>";
+      action = "<cmd>lua vim.lsp.buf.hover({border = \"rounded\"})<cr>";
       options.silent = true;
     }
     {
@@ -112,11 +198,6 @@
       mode = "n";
       key = "QQ";
       action = ":q!<enter>";
-    }
-    {
-      mode = "n";
-      key = "TT";
-      action = ":TransparentToggle<CR>";
     }
     {
       mode = "n";

@@ -4,13 +4,10 @@
     inputs.nixvim.homeModules.nixvim
     ./config/opts.nix
     ./config/extra.nix
-    ./config/trouble.nix
     ./config/lualine.nix
     ./config/conform.nix
-    ./config/transparent.nix
     ./config/lsp/lsp.nix
     ./config/lsp/lspkind.nix
-    ./config/telescope.nix
     ./config/none-ls.nix
     ./config/bufferline.nix
     ./config/rustaceanvim.nix
@@ -34,33 +31,10 @@
         pkgs.gdb
       ];
 
-    extraConfigLua = ''
-      local bufnr = vim.api.nvim_get_current_buf()
-      vim.keymap.set(
-        "n", 
-        "<leader>ca", 
-        function()
-          vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
-          -- or vim.lsp.buf.codeAction() if you don't want grouping.
-        end,
-        { silent = true, buffer = bufnr }
-      )
-      vim.keymap.set(
-        "n", 
-        "K",  -- Override Neovim's built-in hover keymap with rustaceanvim's hover actions
-        function()
-          vim.cmd.RustLsp({'hover', 'actions'})
-        end,
-        { silent = true, buffer = bufnr }
-      )
-    '';
-
     # plugins that dont deserve their own module
     plugins = {
       floaterm.enable = true;
       web-devicons.enable = true;
-      # TeXpresso %
-      # texpresso.enable = true;
       indent-blankline.enable = true;
       gitsigns.enable = true;
       vim-surround.enable = true;
@@ -68,10 +42,16 @@
       autoclose.enable = true;
       comment.enable = true;
       colorizer.enable = true;
-      leap.enable = true;
       luasnip.enable = true;
-      ts-autotag.enable = true;
       zen-mode.enable = true;
+      snacks = {
+        enable = true;
+        settings = {
+          image.enable = true;
+          picker.enable = true;
+        };
+      };
+      flash.enable = true;
       oil = {
         enable = true;
         settings = {
@@ -125,6 +105,13 @@
           "reason"
         ];
       };
+      lsp-signature = {
+        enable = true;
+      };
+      treesitter-context = {
+        enable = true;
+        autoLoad = true;
+      };
       treesitter = {
         enable = true;
         settings = {
@@ -135,10 +122,16 @@
           ensure_installed = [
             "rust"
             "bash"
+            "norg"
             "typescript"
             "c"
             "json"
             "lua"
+            "zig"
+            "css"
+            "markdown"
+            "vim"
+            "html"
             "git_config"
             "git_rebase"
             "gitattributes"

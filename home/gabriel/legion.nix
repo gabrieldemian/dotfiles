@@ -34,10 +34,9 @@
   };
 
   home.packages = with pkgs; [
+    imagemagick
     irssi
     qbittorrent
-    retroarch-full
-    retroarch-assets
     lutris
     protonup-rs
     winePackages.waylandFull
@@ -48,8 +47,6 @@
     discord
     cargo
     mpv
-    slack
-    tor-browser
     zathura
     ani-cli
     feh

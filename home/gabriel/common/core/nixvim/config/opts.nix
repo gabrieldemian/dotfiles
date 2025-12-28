@@ -1,10 +1,10 @@
-{ config, ... }:
+{ ... }:
 {
   config.programs.nixvim = {
     globals = {
       mapleader = " ";
     };
-    colorschemes.catppuccin.enable = true;
+    colorschemes.kanagawa.enable = true;
     globals = {
       # Disable useless providers
       loaded_ruby_provider = 0; # Ruby

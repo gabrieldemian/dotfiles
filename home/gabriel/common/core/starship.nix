@@ -1,7 +1,7 @@
 {
   config.programs.starship = {
     enable = true;
-    "enableZshIntegration" = true;
+    enableZshIntegration = true;
     settings = {
       palettes.catppuccin_macchiato = {
         rosewater = "#f4dbd6";

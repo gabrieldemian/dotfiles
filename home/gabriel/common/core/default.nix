@@ -83,8 +83,6 @@
   home.packages = builtins.attrValues {
     inherit (pkgs)
       # Packages that don't have custom configs go here
-
-      bottom
       coreutils # basic gnu utils
       eza # ls replacement
       dust # disk usage
@@ -92,17 +90,13 @@
       # findutils # find
       fzf # fuzzy search
       jq # JSON pretty printer and manipulator
-      nix-tree # nix package tree viewer
       neofetch # fancier system info than pfetch
       ncdu # TUI disk usage
       pre-commit # git hooks
       p7zip # compression & encryption
       ripgrep # better grep
       lazygit
-      gum
-      glow
       tealdeer
-      termshark
       killall
       steam-run # for running non-NixOS-packaged binaries on Nix
       unzip # zip extraction

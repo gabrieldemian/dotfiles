@@ -12,7 +12,7 @@ in
     inlayHints = false;
 
     servers = {
-      astro.enable = true;
+      nixd.enable = true;
       bashls.enable = true;
       biome.enable = true;
       clangd.enable = true;
