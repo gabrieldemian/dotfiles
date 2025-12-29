@@ -1,4 +1,13 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  configLib,
+  ...
+}:
+let
+  asciiArt = toString (configLib.relativeToRoot "art.txt");
+in
 {
   imports = [
     inputs.nixvim.homeModules.nixvim
@@ -44,14 +53,6 @@
       colorizer.enable = true;
       luasnip.enable = true;
       zen-mode.enable = true;
-      snacks = {
-        enable = true;
-        settings = {
-          image.enable = true;
-          picker.enable = true;
-        };
-      };
-      flash.enable = true;
       oil = {
         enable = true;
         settings = {
@@ -98,12 +99,36 @@
           "Outline"
           "TelescopePrompt"
           "alpha"
+          "snacks_dashboard"
           "harpoon"
           "toggleterm"
           "neo-tree"
           "Spectre"
           "reason"
         ];
+      };
+      treesitter = {
+        enable = true;
+        grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+          bash
+          json
+          lua
+          rust
+          markdown
+          nix
+          toml
+          vim
+          vimdoc
+          yaml
+          c
+          zig
+          css
+          html
+        ];
+        settings = {
+          highlight.enable = true;
+          indent.enable = true;
+        };
       };
       lsp-signature = {
         enable = true;
@@ -112,32 +137,54 @@
         enable = true;
         autoLoad = true;
       };
-      treesitter = {
+      flash.enable = true;
+      snacks = {
         enable = true;
         settings = {
-          highlight.enable = true;
-          indent = {
+          image.enable = true;
+          picker.enable = true;
+          dashboard = {
             enable = true;
+            # centralize col and row
+            row = null;
+            col = null;
+            sections = [
+              {
+                section = "keys";
+                gap = 1;
+                padding = 1;
+              }
+              {
+                icon = " ";
+                title = "Projects";
+                section = "projects";
+                indent = 2;
+                padding = 1;
+              }
+              {
+                icon = " ";
+                title = "Git Status";
+                section = "terminal";
+                enabled = ''
+                            function()
+                  return Snacks.git.get_root() ~= nil end
+                '';
+
+                cmd = "git status --short --branch --renames";
+                height = 5;
+                padding = 1;
+                ttl = 5 * 60;
+                indent = 3;
+              }
+              {
+                pane = 2;
+                section = "terminal";
+                cmd = "cat ${asciiArt}";
+                height = 30;
+                padding = 1;
+              }
+            ];
           };
-          ensure_installed = [
-            "rust"
-            "bash"
-            "norg"
-            "typescript"
-            "c"
-            "json"
-            "lua"
-            "zig"
-            "css"
-            "markdown"
-            "vim"
-            "html"
-            "git_config"
-            "git_rebase"
-            "gitattributes"
-            "gitcommit"
-            "gitignore"
-          ];
         };
       };
     };

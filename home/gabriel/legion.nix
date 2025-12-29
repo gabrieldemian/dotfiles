@@ -35,6 +35,7 @@
 
   home.packages = with pkgs; [
     imagemagick
+    chafa
     irssi
     qbittorrent
     lutris

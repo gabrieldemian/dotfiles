@@ -18,7 +18,7 @@
     }
     {
       mode = [ "n" ];
-      key = "r";
+      key = "R";
       action = "<cmd>lua require(\"flash\").treesitter_search()<cr>";
       options.silent = true;
     }
@@ -38,6 +38,12 @@
       mode = [ "n" ];
       key = "gd";
       action = "<cmd>lua require(\"snacks\").picker.lsp_declarations()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "gD";
+      action = "<cmd>lua require(\"snacks\").picker.lsp_definitions()<cr>";
       options.silent = true;
     }
     {
@@ -252,12 +258,6 @@
     {
       key = "<leader>9";
       action = "<cmd>BufferLineGoToBuffer 9<cr>";
-    }
-    # transparent keys
-    {
-      key = "TT";
-      action = ":TransparentToggle<cr>";
-      options.silent = true;
     }
     # zenmode keys
     {

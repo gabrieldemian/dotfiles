@@ -21,6 +21,7 @@
       })
 
       Map("n", "<leader>lg", ": LazyGit<cr>")
+
     '';
   };
 }
