@@ -45,7 +45,7 @@ in
       };
 
       general = {
-        allow_tearing = false;
+        allow_tearing = true;
         gaps_in = 8;
         gaps_out = 12;
         border_size = 4;
