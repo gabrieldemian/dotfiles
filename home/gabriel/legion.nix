@@ -7,12 +7,13 @@
   imports = [
     ./common/core
 
+    ./common/core/git.nix
+    ./common/core/fonts.nix
+    ./common/core/gtk.nix
+    ./common/core/quickshell.nix
+
     ./common/core/bat.nix
     ./common/core/dunst.nix
-    ./common/core/fonts.nix
-    ./common/core/git.nix
-    ./common/core/gtk.nix
-
     ./common/core/hyprland
     ./common/core/nixvim
     ./common/core/ghostty.nix
@@ -42,7 +43,6 @@
     protonup-rs
     winePackages.waylandFull
     winetricks
-    cross-seed
     google-chrome
     libreoffice-fresh
     discord
@@ -51,6 +51,6 @@
     zathura
     ani-cli
     feh
-    inputs.zen-browser.packages.${pkgs.system}.default
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

@@ -69,8 +69,7 @@
       };
       line_break.disabled = false;
       directory = {
-        # home is where the heart is
-        home_symbol = " ❤";
+        home_symbol = " ";
         read_only = "  ";
         style = "fg:mauve";
         truncation_length = 6;

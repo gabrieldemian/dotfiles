@@ -72,7 +72,7 @@
     }
     {
       mode = [ "n" ];
-      key = "<leader>fp";
+      key = "<leader>pp";
       action = "<cmd>lua require(\"snacks\").picker.projects()<cr>";
       options.silent = true;
     }
@@ -160,12 +160,6 @@
       ];
       key = "<C-l>";
       action = "<Right>";
-    }
-    # keep cursor in place
-    {
-      mode = "x";
-      key = "<leader>p";
-      action = "_dP";
     }
     # copy to clipboard
     {

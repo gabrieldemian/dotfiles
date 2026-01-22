@@ -93,8 +93,8 @@ in
       };
       illuminate = {
         enable = true;
-        underCursor = true;
-        filetypesDenylist = [
+        under_cursor = true;
+        filetypes_denylist = [
           "DressingSelect"
           "Outline"
           "TelescopePrompt"
@@ -110,6 +110,7 @@ in
       treesitter = {
         enable = true;
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+          qmljs
           bash
           json
           lua
@@ -127,7 +128,7 @@ in
         ];
         settings = {
           highlight.enable = true;
-          indent.enable = true;
+          indent.enable = false;
         };
       };
       lsp-signature = {

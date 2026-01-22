@@ -7,9 +7,9 @@
     #   maxWidth = 50;
     #   ellipsisChar = ".";
     # };
-    mode = "symbol";
-    preset = "codicons";
-    symbolMap = {
+    settings.mode = "symbol";
+    settings.preset = "codicons";
+    symbol_map = {
       Text = "󰊄";
       Method = "";
       Function = "󰡱";

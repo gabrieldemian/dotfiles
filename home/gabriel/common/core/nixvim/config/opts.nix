@@ -22,6 +22,11 @@
       expandtab = true;
       swapfile = false;
       showmode = false;
+      smartindent = true;
+      ignorecase = true;
+      smartcase = true;
+      cmdheight = 1;
+      lazyredraw = true;
     };
   };
 }

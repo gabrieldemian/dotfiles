@@ -11,23 +11,27 @@
   config = {
     gtk = {
       enable = true;
-      gtk3.extraConfig = {
-        gtk-xft-antialias = 1;
-        gtk-xft-hinting = 1;
-        gtk-xft-hintstyle = "hintslight";
-        gtk-xft-rgba = "rgb";
-        gtk-application-prefer-dark-theme = 1;
+      theme = {
+        name = "Catppuccin-Macchiato-Standard-Blue-Dark";
+        package = pkgs.catppuccin-gtk.override {
+          accents = [ "blue" ];
+          size = "standard";
+          variant = "macchiato";
+        };
       };
-      gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
-      gtk2.extraConfig = ''
-        gtk-xft-antialias=1
-        gtk-xft-hinting=1
-        gtk-xft-hintstyle="hintslight"
-        gtk-xft-rgba="rgb"
-      '';
       iconTheme = {
-        package = pkgs.catppuccin-papirus-folders;
-        name = "Papirus";
+        name = "Papirus-Dark";
+        package = pkgs.catppuccin-papirus-folders.override {
+          flavor = "macchiato";
+          accent = "blue";
+        };
+      };
+      cursorTheme = {
+        name = "Catppuccin-Macchiato-Dark-Cursors";
+        package = pkgs.catppuccin-cursors.macchiatoDark;
+      };
+      gtk3 = {
+        extraConfig.gtk-application-prefer-dark-theme = true;
       };
     };
     home = {

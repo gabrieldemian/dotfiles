@@ -5,7 +5,7 @@
   ...
 }:
 let
-  wallpapers = builtins.toString (configLib.relativeToRoot "wallpapers");
+  wallpapers = toString (configLib.relativeToRoot "wallpapers");
   cycle_wall = pkgs.callPackage ./scripts/cycle_wall.nix { inherit pkgs wallpapers; };
   screenshot = pkgs.callPackage ./scripts/screenshot.nix { inherit pkgs; };
   select_wallpaper = pkgs.callPackage ../wofi/scripts/select_wallpaper.nix {

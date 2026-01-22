@@ -47,8 +47,6 @@
         max_icon_size = 128;
         sticky_history = "yes";
         history_length = 20;
-        # dmenu = /usr/bin/dmenu -p dunst;
-        # browser = /usr/bin/xdg-open;
         always_run_script = true;
         title = "Dunst";
         class = "Dunst";

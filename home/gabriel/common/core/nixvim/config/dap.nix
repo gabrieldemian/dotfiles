@@ -13,7 +13,7 @@ let
           return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. '/', "file")
       end
     '';
-    cwd = ''''${workspaceFolder}'';
+    cwd = "\${workspaceFolder}";
     stopOnEntry = false;
   };
 
@@ -25,7 +25,7 @@ let
       function()
           return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. '/', "file")
       end'';
-    cwd = ''''${workspaceFolder}'';
+    cwd = "\${workspaceFolder}";
     stopOnEntry = false;
   };
 
@@ -37,12 +37,15 @@ let
       function()
           return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. '/', "file")
       end'';
-    cwd = ''''${workspaceFolder}'';
+    cwd = "\${workspaceFolder}";
     stopOnEntry = false;
   };
 in
 {
   config.programs.nixvim.plugins = {
+    dap-virtual-text.enable = true;
+    dap-ui.enable = true;
+
     dap = {
       enable = true;
 
@@ -106,16 +109,6 @@ in
           gdb-config
           codelldb-config
         ];
-      };
-
-      extensions = {
-        dap-ui = {
-          enable = true;
-        };
-
-        dap-virtual-text = {
-          enable = true;
-        };
       };
 
       signs = {

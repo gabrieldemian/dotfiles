@@ -1,7 +1,5 @@
 {
-  pkgs,
   config,
-  # configVars,
   ...
 }:
 let
@@ -14,10 +12,13 @@ in
 {
   programs.git = {
     enable = true;
-    userName = "gabrieldemian";
-    userEmail = "gabrielgcr45@gmail.com";
-    aliases = { };
-    extraConfig = {
+    settings = {
+      alias = { };
+      user = {
+        name = "gabrieldemian";
+        email = "gabrielgcr45@gmail.com";
+        signing.key = "${publicKey}";
+      };
       log.showSignature = "true";
       init.defaultBranch = "master";
       pull.rebase = "true";
@@ -32,7 +33,6 @@ in
 
       commit.gpgsign = true;
       # gpg.format = "ssh";
-      user.signing.key = "${publicKey}";
       # Taken from https://github.com/clemak27/homecfg/blob/16b86b04bac539a7c9eaf83e9fef4c813c7dce63/modules/git/ssh_signing.nix#L14
       # gpg.ssh.allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
     };

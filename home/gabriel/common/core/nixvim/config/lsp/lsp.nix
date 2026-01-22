@@ -12,6 +12,11 @@ in
     inlayHints = false;
 
     servers = {
+      qmlls = {
+        enable = true;
+        cmd = ["qmlls" "-E"];
+      };
+
       nixd.enable = true;
       bashls.enable = true;
       biome.enable = true;

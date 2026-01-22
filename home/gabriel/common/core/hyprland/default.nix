@@ -1,7 +1,7 @@
 { configLib, pkgs, ... }:
 let
-  wallpapers = builtins.toString (configLib.relativeToRoot "wallpapers");
-  scripts = builtins.toString "./scripts";
+  wallpapers = toString (configLib.relativeToRoot "wallpapers");
+  scripts = toString "./scripts";
   wall =
     pkgs.callPackage (configLib.relativeToRoot "home/gabriel/common/core/waybar/scripts/wall.nix")
       { };
@@ -19,7 +19,7 @@ in
 
     settings = {
       monitor = "eDP-1,2560x1600@240,auto,1";
-      exec-once = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP & dunst & swww-daemon & waybar & ${wall} ${wallpapers}/frieren-dark.jpg & ${scripts}/fix-portal.sh & ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false &";
+      exec-once = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP & dunst & swww-daemon & waybar & ${wall} ${wallpapers}/frieren-dark.jpg & ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false &";
 
       "$terminal" = "ghostty --gtk-single-instance=true";
       "$fileManager" = "ghostty --gtk-single-instance=true -e yazi";
@@ -35,7 +35,7 @@ in
       ];
 
       input = {
-        kb_layout = "us,fr";
+        kb_layout = "us,it";
         kb_options = "grp:alt_shift_toggle";
         follow_mouse = 1;
         touchpad.natural_scroll = "no";
@@ -50,7 +50,6 @@ in
         gaps_out = 12;
         border_size = 4;
         "col.active_border" = "rgba(c6a0f6ee) rgba(ed8796ee) 45deg";
-        # "col.inactive_border" = "transparent";
         layout = "dwindle";
       };
 
@@ -81,8 +80,6 @@ in
         preserve_split = "yes";
       };
 
-      # gestures.workspace_swipe = "off";
-
       misc.force_default_wallpaper = -1;
       misc.vfr = true;
 
@@ -100,68 +97,72 @@ in
         "$mod, mouse:273, resizewindow"
       ];
 
-      bind =
-        [
-          # essential
-          "$mod, Return, exec, $terminal"
-          "$mod, W, killactive"
-          "$mod, M, exit"
-          "$mod, Space, exec, $menu --show drun"
-          "$mod, E, exec, [float;center;size 60% 60%] $fileManager"
-          # floating terminal
-          "$mod SHIFT, Return, exec, [float;center;size 45% 35%] ghostty"
-          #volume
-          ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
-          ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
-          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-          ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-          # toggles
-          "$mod, P, pseudo," # dwindle
-          "$mod, V, togglefloating,"
-          "$mod, T, togglesplit," # dwindle
-          "$mod, F, fullscreen,"
-          # switch
-          "$mod SHIFT, h, swapwindow, l"
-          "$mod SHIFT, l, swapwindow, r"
-          "$mod SHIFT, j, swapwindow, d"
-          "$mod SHIFT, k, swapwindow, u"
-          # move focus with mod + hjkl
-          "$mod, h, movefocus, l"
-          "$mod, l, movefocus, r"
-          "$mod, k, movefocus, u"
-          "$mod, j, movefocus, d"
-          # Light
-          ",code:232,exec,light -U 2"
-          ",code:233,exec,light -A 2"
-          # Example special workspace (scratchpad)
-          "$mod, S, togglespecialworkspace, magic"
-          "$mod SHIFT, S, movetoworkspace, special:magic"
-          # Scroll through existing workspaces with mod + scroll
-          "$mod, mouse_down, workspace, e+1"
-          "$mod, mouse_up, workspace, e-1"
-          # Toggle game mode to disable animations
-          "$mod CTRL SHIFT, 0, exec, ${scripts}/gamemode.sh"
-        ]
-        ++ (
-          # workspaces
-          # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
-          builtins.concatLists (
-            builtins.genList (
-              x:
-              let
-                ws =
-                  let
-                    c = (x + 1) / 10;
-                  in
-                  builtins.toString (x + 1 - (c * 10));
-              in
-              [
-                "$mod, ${ws}, workspace, ${toString (x + 1)}"
-                "$mod SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
-              ]
-            ) 10
-          )
-        );
+      bind = [
+        # essential
+        "$mod, Return, exec, $terminal"
+        "$mod, W, killactive"
+        "$mod, M, exit"
+        "$mod, Space, exec, $menu --show drun"
+        "$mod, E, exec, [float;center;size 80% 80%] $fileManager"
+        # floating terminal
+        "$mod SHIFT, Return, exec, [float;center;size 45% 35%] $terminal"
+        #volume
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        # toggles
+        "$mod, P, pseudo," # dwindle
+        "$mod, V, togglefloating,"
+        "$mod, T, togglesplit," # dwindle
+        "$mod, F, fullscreen,"
+        # switch
+        "$mod SHIFT, h, swapwindow, l"
+        "$mod SHIFT, l, swapwindow, r"
+        "$mod SHIFT, j, swapwindow, d"
+        "$mod SHIFT, k, swapwindow, u"
+        #resize
+        "$mod CTRL, h, resizeactive, -15% 0"
+        "$mod CTRL, l, resizeactive, 15% 0"
+        "$mod CTRL, j, resizeactive, 0 15%"
+        "$mod CTRL, k, resizeactive, 0 -15%"
+        # move focus with mod + hjkl
+        "$mod, h, movefocus, l"
+        "$mod, l, movefocus, r"
+        "$mod, k, movefocus, u"
+        "$mod, j, movefocus, d"
+        # Light
+        ",code:232,exec,light -U 2"
+        ",code:233,exec,light -A 2"
+        # Example special workspace (scratchpad)
+        "$mod, S, togglespecialworkspace, magic"
+        "$mod SHIFT, S, movetoworkspace, special:magic"
+        # Scroll through existing workspaces with mod + scroll
+        "$mod, mouse_down, workspace, e+1"
+        "$mod, mouse_up, workspace, e-1"
+        # Toggle game mode to disable animations
+        "$mod CTRL SHIFT, 0, exec, ${scripts}/gamemode.sh"
+      ]
+      ++ (
+        # workspaces
+        # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
+        builtins.concatLists (
+          builtins.genList (
+            x:
+            let
+              ws =
+                let
+                  c = (x + 1) / 10;
+                in
+                toString (x + 1 - (c * 10));
+            in
+            [
+              "$mod, ${ws}, workspace, ${toString (x + 1)}"
+              "$mod SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
+            ]
+          ) 10
+        )
+      );
     };
   };
 }

@@ -101,7 +101,7 @@
       allow_images = true;
       gtk_dark = true;
       image_size = 24;
-      term = "kitty";
+      term = "ghostty";
       hide_scroll = true;
     };
     style = ''

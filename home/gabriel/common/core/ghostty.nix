@@ -7,13 +7,13 @@
 {
   config.home = {
     packages = [
-      inputs.ghostty.packages.${pkgs.system}.default
+      inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     file."${config.xdg.configHome}/ghostty/config" = {
       recursive = true;
       text = ''
-        font-size = "15"
+        font-size = "18"
         font-family = "Pixel Code"
         window-theme = ghostty
         adw-toolbar-style = flat
