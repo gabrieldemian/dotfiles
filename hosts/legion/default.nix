@@ -133,7 +133,6 @@
       settings = {
         animation = "doom";
         battery_id = "BAT0";
-        hide_borders = true;
       };
     };
     xserver = {

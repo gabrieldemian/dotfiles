@@ -72,6 +72,7 @@
           EDITOR = "$(which nvim)";
           SYSTEM_EDITOR = "$(which nvim)";
           VISUAL = "$(which nvim)";
+          KWIN_DRM_PREFER_COLOR_DEPTH = 10;
         };
       };
 

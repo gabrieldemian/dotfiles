@@ -18,7 +18,7 @@ in
     # systemd.enable = true;
 
     settings = {
-      monitor = "eDP-1,2560x1600@240,auto,1";
+      monitor = "eDP-1,2560x1600@240,auto,1,bitdepth,10";
       exec-once = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP & dunst & swww-daemon & waybar & ${wall} ${wallpapers}/frieren-dark.jpg & ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false &";
 
       "$terminal" = "ghostty --gtk-single-instance=true";
