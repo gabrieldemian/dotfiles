@@ -28,8 +28,8 @@
   services.gammastep = {
     enable = true;
     provider = "manual";
-    latitude = 48.85661400;
-    longitude = 2.35222190;
+    latitude = 41.4575;
+    longitude = 12.661111;
     temperature.day = 6000;
     temperature.night = 2000;
   };
