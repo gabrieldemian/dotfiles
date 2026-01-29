@@ -116,15 +116,15 @@
   services = {
     cloudflare-warp.enable = false;
 
-    resolved = {
+    Resolved = {
       enable = true;
-      dnssec = "true";
-      domains = [ "~." ];
-      fallbackDns = [
+      DNSSEC = "true";
+      Domains = [ "~." ];
+      FallbackDNS = [
         "1.1.1.1#one.one.one.one"
         "1.0.0.1#one.one.one.one"
       ];
-      dnsovertls = "true";
+      DNSOverTLS = "true";
     };
     blueman.enable = true;
     dbus.enable = true;
