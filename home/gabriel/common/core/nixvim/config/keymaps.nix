@@ -36,6 +36,24 @@
     }
     {
       mode = [ "n" ];
+      key = "gai";
+      action = "<cmd>lua require(\"snacks\").picker.incoming_calls()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "gao";
+      action = "<cmd>lua require(\"snacks\").picker.outgoing_calls()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "gt";
+      action = "<cmd>lua require(\"snacks\").picker.lsp_type_definitions()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
       key = "gd";
       action = "<cmd>lua require(\"snacks\").picker.lsp_declarations()<cr>";
       options.silent = true;
@@ -66,8 +84,26 @@
     }
     {
       mode = [ "n" ];
-      key = "<leader>s";
-      action = "<cmd>lua require(\"snacks\").scratch()<cr>";
+      key = "<leader>sd";
+      action = "<cmd>lua require(\"snacks\").picker.diagnostics()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "<leader>sD";
+      action = "<cmd>lua require(\"snacks\").picker.diagnostics_buffer()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "<leader>sk";
+      action = "<cmd>lua require(\"snacks\").picker.keymaps()<cr>";
+      options.silent = true;
+    }
+    {
+      mode = [ "n" ];
+      key = "<leader>sM";
+      action = "<cmd>lua require(\"snacks\").picker.man()<cr>";
       options.silent = true;
     }
     {

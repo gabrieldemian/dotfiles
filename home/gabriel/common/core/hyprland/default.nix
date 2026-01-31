@@ -88,9 +88,9 @@ in
         sensitivity = -0.5;
       };
 
-      windowrulev2 = [
-        "float,class:^(nautilus)$,title:^(nautilus)$"
-      ];
+      # windowrule = [
+      #   "float,class:^(nautilus)$,title:^(nautilus)$"
+      # ];
 
       bindm = [
         "$mod, mouse:272, movewindow"
