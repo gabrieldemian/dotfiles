@@ -25,6 +25,12 @@
     ./common/optional/browsers
   ];
 
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "lavender";
+  };
+
   services.gammastep = {
     enable = true;
     provider = "manual";

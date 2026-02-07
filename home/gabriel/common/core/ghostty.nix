@@ -20,7 +20,7 @@
         theme = Kanagawa Wave
         background-opacity = 0.88
         background-blur = 30
-        window-padding-x = 5
+        window-padding-x = 10
 
         keybind = "ctrl+super+h=goto_split:left"
         keybind = "ctrl+super+l=goto_split:right"

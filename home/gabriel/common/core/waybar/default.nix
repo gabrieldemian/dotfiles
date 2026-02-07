@@ -320,7 +320,6 @@ in
           "custom/select_wallpaper"
           "custom/ss"
           "custom/cycle_wall"
-          "custom/expand"
           "cpu"
           "clock"
         ];
@@ -488,17 +487,6 @@ in
           tooltip-format-ethernet = "{ifname} ";
           tooltip-format-disconnected = "Disconnected";
           max-length = 50;
-        };
-        "custom/media" = {
-          format = "{icon} {}";
-          return-type = "json";
-          max-length = 40;
-          format-icons = {
-            spotify = "";
-            default = "🎜";
-          };
-          escape = true;
-          exec = "$HOME/.config/waybar/mediaplayer.py 2> /dev/null";
         };
       };
     };
