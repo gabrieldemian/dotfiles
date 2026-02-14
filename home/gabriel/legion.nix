@@ -41,6 +41,7 @@
   };
 
   home.packages = with pkgs; [
+    wf-recorder
     imagemagick
     chafa
     irssi

@@ -20,9 +20,10 @@ in
     settings = {
       monitor = "eDP-1,2560x1600@240,auto,1,bitdepth,10";
       exec-once = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP & dunst & swww-daemon & waybar & ${wall} ${wallpapers}/frieren-dark.jpg & ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false &";
-
-      "$terminal" = "ghostty --gtk-single-instance=true";
-      "$fileManager" = "ghostty --gtk-single-instance=true -e yazi";
+      # im sorry but ghostty is still not fast enough
+      "$terminal" = "alacritty";
+      # just because of the kitty image protocol
+      "$fileManager" = "ghostty -e yazi";
       "$menu" = "wofi";
       "$mod" = "SUPER";
 
@@ -103,9 +104,9 @@ in
         "$mod, W, killactive"
         "$mod, M, exit"
         "$mod, Space, exec, $menu --show drun"
-        "$mod, E, exec, [float;center;size 80% 80%] $fileManager"
+        "$mod, E, exec, [float;center;size 1600 900] $fileManager"
         # floating terminal
-        "$mod SHIFT, Return, exec, [float;center;size 45% 35%] $terminal"
+        "$mod SHIFT, Return, exec, [float;center;size 1600 900] alacritty"
         #volume
         ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
         ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"

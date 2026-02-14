@@ -16,7 +16,7 @@
           family = "Pixel Code";
         in
         {
-          size = 13;
+          size = 17;
           normal = {
             style = "Regular";
             inherit family;

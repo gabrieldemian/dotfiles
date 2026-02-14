@@ -6,5 +6,4 @@
   pixelcode = pkgs.callPackage ./pixelcode.nix { };
   mondwest = pkgs.callPackage ./mondwest.nix { };
   neuebit = pkgs.callPackage ./neuebit.nix { };
-  foundry = pkgs.callPackage ./foundry { };
 }
