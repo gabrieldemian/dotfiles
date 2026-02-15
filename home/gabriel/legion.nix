@@ -25,6 +25,12 @@
     ./common/optional/browsers
   ];
 
+  home.file.".cargo/config.toml".text = ''
+    [target.'cfg(target_os = "linux")']
+    linker = "${pkgs.clang}/bin/clang"
+    rustflags = ["-C", "link-arg=-fuse-ld=${pkgs.mold-wrapped}/bin/mold"]
+  '';
+
   catppuccin = {
     enable = true;
     flavor = "mocha";
