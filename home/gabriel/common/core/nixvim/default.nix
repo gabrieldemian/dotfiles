@@ -53,6 +53,7 @@ in
       colorizer.enable = true;
       luasnip.enable = true;
       zen-mode.enable = true;
+      ts-autotag.enable = true;
       oil = {
         enable = true;
         settings = {
@@ -125,10 +126,12 @@ in
           zig
           css
           html
+          typescript
+          tsx
         ];
         settings = {
           highlight.enable = true;
-          indent.enable = false;
+          indent.enable = true;
         };
       };
       lsp-signature = {
