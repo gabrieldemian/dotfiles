@@ -22,32 +22,34 @@
       "$HOME/.cargo/bin"
     ];
     sessionVariables = {
-      TERM = "ghostty";
-      TERMINAL = "ghostty";
+      TERM = "alacritty";
+      TERMINAL = "alacritty";
     };
     preferXdgDirectories = true; # whether to make programs use XDG directories whenever supported
   };
 
   xdg = {
     enable = true;
+    autostart.enable = true;
     portal = {
       enable = true;
       extraPortals = with pkgs; [
+        xdg-desktop-portal
         xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
       ];
       config = {
-        pantheon = {
-          default = [
-            "pantheon"
-          ];
-          "org.freedesktop.impl.portal.Secret" = [
-            "gnome-keyring"
-          ];
+        common = {
+          default = [ "gtk" ];
+          "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
         };
-        x-cinnamon = {
+        hyprland = {
           default = [
-            "xapp"
+            "hyprland"
+            "gtk"
           ];
+          "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+          "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
         };
       };
     };

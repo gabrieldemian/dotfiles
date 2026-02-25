@@ -50,9 +50,9 @@
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
-      GBM_BACKEND = "nvidia";
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-      LIBVA_DRIVER_NAME = "nvidia";
+      GBM_BACKEND = "nvidia-drm";
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia-drm";
+      LIBVA_DRIVER_NAME = "nvidia-drm";
       __GL_GSYNC_ALLOWED = "1";
       __GL_VRR_ALLOWED = "0";
       WLR_DRM_NO_ATOMIC = "1";
@@ -117,6 +117,7 @@
 
   security = {
     polkit.enable = true;
+    rtkit.enable = true;
   };
 
   services = {
