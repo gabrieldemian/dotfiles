@@ -49,8 +49,8 @@ in
       vim-surround.enable = true;
       nvim-autopairs.enable = true;
       autoclose.enable = true;
-      comment.enable = true;
       colorizer.enable = true;
+      ts-context-commentstring.enable = true;
       luasnip.enable = true;
       zen-mode.enable = true;
       ts-autotag.enable = true;
@@ -132,7 +132,26 @@ in
         settings = {
           highlight.enable = true;
           indent.enable = true;
+          context_commentstring = {
+            config = {
+              javascript = {
+                __default = "// %s";
+                jsx_element = "{/* %s */}";
+                jsx_fragment = "{/* %s */}";
+                jsx_attribute = "// %s";
+                comment = "// %s";
+              };
+              typescript = {
+                __default = "// %s";
+                __multiline = "/* %s */";
+              };
+            };
+          };
         };
+      };
+      comment = {
+        enable = true;
+        settings.pre_hook = "require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()";
       };
       lsp-signature = {
         enable = true;

@@ -9,7 +9,6 @@
       options.silent = true;
     }
 
-    # snacks
     {
       mode = [ "n" ];
       key = "s";
@@ -20,12 +19,6 @@
       mode = [ "n" ];
       key = "R";
       action = "<cmd>lua require(\"flash\").treesitter_search()<cr>";
-      options.silent = true;
-    }
-    {
-      mode = [ "n" ];
-      key = "ff";
-      action = "<cmd>lua require(\"snacks\").picker.files()<cr>";
       options.silent = true;
     }
     {
@@ -114,13 +107,13 @@
     }
     {
       mode = [ "n" ];
-      key = "fc";
+      key = "<leader>fc";
       action = "<cmd>lua require(\"snacks\").picker.files({ cwd = vim.fn.stdpath(\"config\") })<cr>";
       options.silent = true;
     }
     {
       mode = [ "n" ];
-      key = "fg";
+      key = "<leader>fg";
       action = "<cmd>lua require(\"snacks\").picker.grep()<cr>";
       options.silent = true;
     }
@@ -132,7 +125,7 @@
     }
     {
       mode = [ "n" ];
-      key = "ff";
+      key = "<leader>ff";
       action = "<cmd>lua require(\"snacks\").picker.files()<cr>";
       options.silent = true;
     }
