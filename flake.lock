@@ -246,6 +246,26 @@
         "type": "github"
       }
     },
+    "nix-ld": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771232085,
+        "narHash": "sha256-eznGLYfxj/lhJIQWyz3TdEJhyGXzJoub0EamKacLOH0=",
+        "owner": "Mic92",
+        "repo": "nix-ld",
+        "rev": "25e84aaf955031b7573b6e6efecf64b0f4b27f8a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "nix-ld",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1770882871,
@@ -359,6 +379,7 @@
         "catppuccin": "catppuccin",
         "ghostty": "ghostty",
         "home-manager": "home-manager_2",
+        "nix-ld": "nix-ld",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",

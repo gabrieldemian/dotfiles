@@ -52,7 +52,7 @@ in
       adapters = {
         executables = {
           cppdbg = {
-            command = "gdb";
+            command = "${pkgs.gdb}/bin/gdb";
             args = [
               "-i"
               "dap"
@@ -60,7 +60,7 @@ in
           };
 
           gdb = {
-            command = "gdb";
+            command = "${pkgs.gdb}/bin/gdb";
             args = [
               "-i"
               "dap"
@@ -68,12 +68,7 @@ in
           };
 
           lldb = {
-            command = "${pkgs.lldb}/bin/lldb-vscode";
-          };
-
-          coreclr = {
-            command = "${lib.getExe pkgs.netcoredbg}";
-            args = [ "--interpreter=vscode" ];
+            command = "${pkgs.lldb_20}/bin/lldb-dap";
           };
         };
 

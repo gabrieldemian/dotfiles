@@ -33,7 +33,7 @@ in
       with pkgs;
       [
         coreutils
-        lldb
+        lldb_20
         netcoredbg
       ]
       ++ lib.optionals pkgs.stdenv.isLinux [
