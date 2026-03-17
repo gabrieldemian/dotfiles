@@ -19,9 +19,7 @@
         enable = true;
 
         default_settings = {
-
           rustc.source = "discover";
-
           rust_analyzer = {
             check = {
               command = "clippy";

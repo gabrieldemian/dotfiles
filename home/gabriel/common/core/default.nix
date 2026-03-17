@@ -72,19 +72,20 @@
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
+      brightnessctl
       # Packages that don't have custom configs go here
       coreutils # basic gnu utils
       eza # ls replacement
       fd # tree style ls
       fzf # fuzzy search
-      neofetch # fancier system info than pfetch
+      fastfetch
       ncdu # TUI disk usage
       p7zip # compression & encryption
       ripgrep # better grep
       lazygit
       tealdeer
       killall
-      unzip # zip extraction
+      unzip 
       xdg-utils # provide cli tools such as `xdg-mime` and `xdg-open`
       xdg-user-dirs
       bottom

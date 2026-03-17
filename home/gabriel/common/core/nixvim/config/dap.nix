@@ -147,7 +147,7 @@ in
     }
     {
       mode = "n";
-      key = "<leader>c";
+      key = "<C-c>";
       action.__raw = ''
         function()
           require("dap").continue()
@@ -223,7 +223,7 @@ in
     }
     {
       mode = "n";
-      key = "<leader>dS";
+      key = "<leader>di";
       action.__raw = ''
         function()
           require("dap").step_into()

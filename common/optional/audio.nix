@@ -18,6 +18,7 @@
       playerctl # cli utility and lib for controlling media players
       pwvucontrol
       easyeffects
+      pulseaudio
       ;
   };
 }

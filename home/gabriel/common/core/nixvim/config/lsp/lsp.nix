@@ -17,6 +17,7 @@ in
         cmd = ["qmlls" "-E"];
       };
 
+      jsonls.enable = true;
       nixd.enable = true;
       bashls.enable = true;
       biome.enable = true;

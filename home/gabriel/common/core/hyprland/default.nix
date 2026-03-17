@@ -133,8 +133,8 @@ in
         "$mod, k, movefocus, u"
         "$mod, j, movefocus, d"
         # Light
-        ",code:232,exec,light -U 2"
-        ",code:233,exec,light -A 2"
+        ",code:232,exec,brightnessctl -d intel_backlight set 2%-"
+        ",code:233,exec,brightnessctl -d intel_backlight set +2%"
         # Example special workspace (scratchpad)
         "$mod, S, togglespecialworkspace, magic"
         "$mod SHIFT, S, movetoworkspace, special:magic"
