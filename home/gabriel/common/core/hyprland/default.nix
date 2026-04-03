@@ -30,9 +30,9 @@ in
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-        "LIBVA_DRIVER_NAME,nvidia"
-        "ELECTRON_OZONE_PLATFORM_HINT,auto"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia-drm"
+        "LIBVA_DRIVER_NAME,nvidia-drm"
+        # "NVD_BACKEND,direct"
       ];
 
       input = {
@@ -142,7 +142,7 @@ in
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
         # Toggle game mode to disable animations
-        "$mod CTRL SHIFT, 0, exec, ${scripts}/gamemode.sh"
+        "$mod CTRL, 0, exec, ${scripts}/gamemode.sh"
       ]
       ++ (
         # workspaces

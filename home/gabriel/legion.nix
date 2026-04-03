@@ -48,14 +48,18 @@
 
   home.packages = with pkgs; [
     wf-recorder
+    ffmpeg
     imagemagick
     chafa
     irssi
     qbittorrent
     lutris
     protonup-rs
-    winePackages.waylandFull
+    vulkan-tools
+    # winePackages.waylandFull
     winetricks
+    # support both 32-bit and 64-bit applications
+    wineWow64Packages.unstableFull
     google-chrome
     libreoffice-fresh
     discord

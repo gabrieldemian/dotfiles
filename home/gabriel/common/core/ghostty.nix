@@ -13,7 +13,7 @@
     file."${config.xdg.configHome}/ghostty/config" = {
       recursive = true;
       text = ''
-        font-size = "18"
+        font-size = "16"
         font-family = "Pixel Code"
         window-theme = ghostty
         adw-toolbar-style = flat

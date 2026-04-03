@@ -114,9 +114,21 @@
     };
   };
 
+  systemd.settings.Manager = {
+    DefaultLimitNOFILE = 524288;
+  };
+
   security = {
     polkit.enable = true;
     rtkit.enable = true;
+    pam.loginLimits = [
+      {
+        domain = "gabriel";
+        type = "hard";
+        item = "nofile";
+        value = "524288";
+      }
+    ];
   };
 
   services = {
