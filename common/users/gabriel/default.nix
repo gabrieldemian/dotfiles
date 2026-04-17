@@ -3,6 +3,7 @@
   pkgs,
   config,
   configLib,
+  inputs,
   ...
 }:
 # pubKeys = lib.filesystem.listFilesRecursive ./keys;
@@ -78,9 +79,8 @@
       };
 
       environment.systemPackages = with pkgs; [
-        # just
-        # rsync
         nodejs
+        inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
       ];
     };
 }

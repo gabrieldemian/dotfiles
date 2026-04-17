@@ -50,9 +50,9 @@
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
-      GBM_BACKEND = "nvidia-drm";
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia-drm";
-      LIBVA_DRIVER_NAME = "nvidia-drm";
+      GBM_BACKEND = "nvidia";
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      LIBVA_DRIVER_NAME = "nvidia";
       __GL_GSYNC_ALLOWED = "1";
       __GL_VRR_ALLOWED = "0";
       WLR_DRM_NO_ATOMIC = "1";
@@ -68,7 +68,7 @@
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = [ ];
+    blacklistedKernelModules = [ "nouveau" ];
     initrd.kernelModules = [ "nvidia" ];
     loader = {
       systemd-boot.enable = true;
@@ -159,7 +159,7 @@
       displayManager = {
         lightdm.enable = lib.mkForce false;
       };
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = [ "nvidia" "modesetting" ];
       enable = true;
       xkb.layout = "us";
       # √(2560² + 1600²) px / 16 in ≃ 189 dpi
@@ -194,6 +194,7 @@
       open = false;
       package = config.boot.kernelPackages.nvidiaPackages.beta;
       prime = {
+        # offload.enable = true;
         sync.enable = true;
         intelBusId = "PCI:0:2:0";
         nvidiaBusId = "PCI:1:0:0";

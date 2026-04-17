@@ -31,13 +31,12 @@
     ghostty.url = "github:ghostty-org/ghostty";
     ghostty.inputs.nixpkgs.follows = "nixpkgs";
 
-    # nix-ld.url = "github:Mic92/nix-ld";
-    # nix-ld.inputs.nixpkgs.follows = "nixpkgs";
+    awww.url = "git+https://codeberg.org/LGFae/awww";
+    awww.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     {
       self,
-      # nix-ld,
       nixpkgs,
       nixos-hardware,
       home-manager,
@@ -98,7 +97,6 @@
           inherit specialArgs;
           system = "x86_64-linux";
           modules = [
-            # nix-ld.nixosModules.nix-ld
             home-manager.nixosModules.home-manager
             catppuccin.nixosModules.catppuccin
             { home-manager.extraSpecialArgs = specialArgs; }

@@ -12,8 +12,8 @@
     gtk = {
       enable = true;
       colorScheme = "dark";
-      theme.name = "Breeze-Dark";
-      theme.package = pkgs.kdePackages.breeze-gtk;
+      # theme.name = "Breeze-Dark";
+      # theme.package = pkgs.kdePackages.breeze-gtk;
       iconTheme.name = "Papirus-Dark";
     };
     home = {

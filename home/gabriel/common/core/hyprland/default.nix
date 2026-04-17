@@ -1,7 +1,6 @@
 { configLib, pkgs, ... }:
 let
   wallpapers = toString (configLib.relativeToRoot "wallpapers");
-  scripts = toString "./scripts";
   wall =
     pkgs.callPackage (configLib.relativeToRoot "home/gabriel/common/core/waybar/scripts/wall.nix")
       { };
@@ -19,8 +18,7 @@ in
 
     settings = {
       monitor = "eDP-1,2560x1600@240,auto,1,bitdepth,10";
-      exec-once = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP & dunst & swww-daemon & waybar & ${wall} ${wallpapers}/frieren-dark.jpg & ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false &";
-      # im sorry but ghostty is still not fast enough
+      exec-once = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP & dunst & awww-daemon --no-cache --format xrgb & waybar & ${wall} ${wallpapers}/frieren_green_eyes.png & ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false &";
       "$terminal" = "alacritty";
       # just because of the kitty image protocol
       "$fileManager" = "ghostty -e yazi";
@@ -30,9 +28,8 @@ in
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
-        "__GLX_VENDOR_LIBRARY_NAME,nvidia-drm"
-        "LIBVA_DRIVER_NAME,nvidia-drm"
-        # "NVD_BACKEND,direct"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "LIBVA_DRIVER_NAME,nvidia"
       ];
 
       input = {
@@ -89,16 +86,14 @@ in
         sensitivity = -0.5;
       };
 
-      # windowrule = [
-      #   "float,class:^(nautilus)$,title:^(nautilus)$"
-      # ];
-
       bindm = [
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
 
       bind = [
+        # Toggle game mode to disable animations
+        "$mod, G, exec, ${./scripts/gamemode.sh}"
         # essential
         "$mod, Return, exec, $terminal"
         "$mod, W, killactive"
@@ -135,14 +130,6 @@ in
         # Light
         ",code:232,exec,brightnessctl -d intel_backlight set 2%-"
         ",code:233,exec,brightnessctl -d intel_backlight set +2%"
-        # Example special workspace (scratchpad)
-        "$mod, S, togglespecialworkspace, magic"
-        "$mod SHIFT, S, movetoworkspace, special:magic"
-        # Scroll through existing workspaces with mod + scroll
-        "$mod, mouse_down, workspace, e+1"
-        "$mod, mouse_up, workspace, e-1"
-        # Toggle game mode to disable animations
-        "$mod CTRL, 0, exec, ${scripts}/gamemode.sh"
       ]
       ++ (
         # workspaces
