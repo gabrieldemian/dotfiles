@@ -14,7 +14,6 @@
     ## -- utilities --
 
     zig-overlay.url = "github:mitchellh/zig-overlay";
-    zls-overlay.url = "github:zigtools/zls";
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
@@ -33,16 +32,16 @@
 
     awww.url = "git+https://codeberg.org/LGFae/awww";
     awww.inputs.nixpkgs.follows = "nixpkgs";
+
+    zls-overlay.url = "github:zigtools/zls";
+    zls-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     {
       self,
       nixpkgs,
-      nixos-hardware,
       home-manager,
       catppuccin,
-      ghostty,
-      zig-overlay,
       ...
     }@inputs:
     let

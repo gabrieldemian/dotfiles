@@ -1,10 +1,4 @@
 { inputs, ... }:
-# let
-#   zig = inputs.zig-overlay.packages.x86_64-linux.master;
-#   zls = inputs.zls-overlay.packages.x86_64-linux.zls.overrideAttrs (old: {
-#     nativeBuildInputs = [ zig ];
-#   });
-# in
 {
   config.programs.nixvim.diagnostic.settings.virtual_text = true;
   config.programs.nixvim.plugins.lsp = {
@@ -29,7 +23,7 @@
       tailwindcss.enable = true;
       zls = {
         enable = true;
-        # package = zls;
+        package = inputs.zls-overlay.packages."x86_64-linux".zls;
         settings = {
           enable_build_on_save = true;
           build_on_save_step = "check";

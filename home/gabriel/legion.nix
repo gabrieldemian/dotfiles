@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   ...
 }:
@@ -69,6 +68,5 @@
     ani-cli
     feh
     modrinth-app
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
