@@ -44,7 +44,14 @@ in
     plugins = {
       floaterm.enable = true;
       web-devicons.enable = true;
-      indent-blankline.enable = true;
+      indent-blankline = {
+        enable = true;
+        settings = {
+          indent = {
+            char = "▏";
+          };
+        };
+      };
       gitsigns.enable = true;
       vim-surround.enable = true;
       nvim-autopairs.enable = true;

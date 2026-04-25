@@ -4,7 +4,7 @@
     globals = {
       mapleader = " ";
     };
-    colorschemes.kanagawa.enable = true;
+    colorschemes.kanagawa-paper.enable = true;
     globals = {
       # Disable useless providers
       loaded_ruby_provider = 0; # Ruby
@@ -12,6 +12,7 @@
       loaded_python_provider = 0; # Python 2
     };
     opts = {
+      background = "dark";
       relativenumber = true;
       termguicolors = true;
       cursorline = true;

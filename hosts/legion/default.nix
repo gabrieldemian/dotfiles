@@ -10,7 +10,6 @@
   imports = lib.flatten [
     ./hardware-configuration.nix
 
-    outputs.nixosModules.ledger
     outputs.nixosModules.docker
     outputs.nixosModules.battery-notifier
 

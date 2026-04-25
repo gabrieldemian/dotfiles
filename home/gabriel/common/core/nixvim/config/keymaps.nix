@@ -230,7 +230,7 @@
     }
     {
       mode = "n";
-      key = "<leader>f";
+      key = "<leader>fm";
       action = "<cmd>lua vim.lsp.buf.format()<cr>";
     }
     # bufferline keys

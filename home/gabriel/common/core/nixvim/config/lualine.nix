@@ -5,7 +5,7 @@
 
     settings = {
       options = {
-        theme = "catppuccin";
+        theme = "auto";
         alwaysDivideMiddle = true;
         globalstatus = true;
 
