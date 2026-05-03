@@ -1,0 +1,12 @@
+[font]
+size = 8.0
+normal = { family = "Pixel Code" }
+bold = { family = "Pixel Code" }
+italic = { family = "Pixel Code" }
+bold_italic = { family = "Pixel Code" }
+
+[window]
+padding.x = 5
+padding.y = 5
+dynamic_padding = true
+opacity = 1
