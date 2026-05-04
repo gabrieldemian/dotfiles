@@ -1,5 +1,12 @@
+[general]
+import = ["~/.config/alacritty/colors.toml"]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
 [font]
-size = 8.0
+size = 7.1
 normal = { family = "Pixel Code" }
 bold = { family = "Pixel Code" }
 italic = { family = "Pixel Code" }

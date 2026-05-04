@@ -12,7 +12,7 @@ local function smart_enter()
 	local col         = vim.fn.col('.')
 	local left        = line:sub(1, col - 1):match('^(.*%S)%s*$')
 	local right, rest = line:sub(col):match('^%s*(%S)(.*)')
-	local pairs       = { ['{'] = '}', ['('] = ')', ['['] = ']' }
+	local pairs       = { ['{'] = '}', ['('] = ')', ['['] = ']', ['<'] = '>' }
 	if left and right and pairs[left:sub(-1)] == right then
 		local indent = line:match('^%s*')
 		local tab = vim.bo.expandtab and ' ' or '\t'
@@ -37,15 +37,15 @@ vim.g.mapleader = " "
 vim.cmd("colorscheme default")
 vim.g.autoformat = true
 vim.g.markdown_recommended_style = 0
-vim.wo.number = true
-vim.wo.numberwidth = 2
-vim.wo.scrolloff = 8
-vim.wo.sidescrolloff = 4
-vim.wo.list = true
-vim.bo.undofile = true
-vim.bo.shiftwidth = 4
-vim.bo.tabstop = 4
-vim.bo.softtabstop = 4
+vim.o.number = true
+vim.o.numberwidth = 2
+vim.o.scrolloff = 8
+vim.o.sidescrolloff = 4
+vim.o.list = true
+vim.o.undofile = true
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
 -- vim.wo.breakindent = true
 -- vim.treesitter.indent = true
 -- vim.bo.autoindent = true
@@ -84,11 +84,34 @@ vim.o.synmaxcol = 300 -- Syntax highlighting limit
 vim.o.redrawtime = 10000
 vim.o.maxmempattern = 20000
 
--- make the status bar the same color as the background
-local line_color = vim.api.nvim_get_hl(0, { name = 'Normal' }).bg
-if line_color then
-	vim.api.nvim_set_hl(0, 'StatusLine', { bg = line_color })
-end
+local colors = require("colors")
+vim.api.nvim_set_hl(0, 'Normal', { bg = colors.black, fg = colors.white_bright })
+vim.api.nvim_set_hl(0, '@variable', { fg = colors.white_bright })
+vim.api.nvim_set_hl(0, 'PreProc', { fg = colors.cyan })
+vim.api.nvim_set_hl(0, 'Special', { fg = colors.cyan_bright })
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = colors.black })
+vim.api.nvim_set_hl(0, 'NormalFloat', { bg = colors.black })
+vim.api.nvim_set_hl(0, 'Search', { fg = colors.yellow, bg = colors.black_bright })
+vim.api.nvim_set_hl(0, 'Visual', { bg = colors.black_bright })
+
+vim.api.nvim_set_hl(0, 'String', { fg = colors.green })
+vim.api.nvim_set_hl(0, 'Character', { fg = colors.green })
+vim.api.nvim_set_hl(0, 'Comment', { fg = colors.white })
+vim.api.nvim_set_hl(0, 'Function', { fg = colors.blue_bright })
+vim.api.nvim_set_hl(0, 'Number', { fg = colors.magenta_bright })
+vim.api.nvim_set_hl(0, 'Float', { fg = colors.magenta_bright })
+vim.api.nvim_set_hl(0, 'Type', { fg = colors.cyan_bright })
+vim.api.nvim_set_hl(0, 'Statement', { fg = colors.white_bright })
+vim.api.nvim_set_hl(0, 'Identifier', { fg = colors.white_bright })
+vim.api.nvim_set_hl(0, 'Define', { fg = colors.white_bright })
+vim.api.nvim_set_hl(0, 'Special', { fg = colors.yellow })
+vim.api.nvim_set_hl(0, 'Boolean', { fg = colors.yellow_bright })
+vim.api.nvim_set_hl(0, 'Delimiter', { fg = colors.white_bright })
+vim.api.nvim_set_hl(0, 'Operator', { fg = colors.white_bright })
+vim.api.nvim_set_hl(0, 'Error', { fg = colors.red })
+vim.api.nvim_set_hl(0, 'Constant', { fg = colors.white_bright })
+vim.api.nvim_set_hl(0, 'TabLine', { bg = colors.black, fg = colors.black_bright })
+vim.api.nvim_set_hl(0, 'TabLineSel', { fg = colors.white })
 
 vim.filetype.add({
 	extension = {
@@ -152,7 +175,6 @@ map("i", "'", "''<left>")
 map("i", "(", "()<left>")
 map("i", "[", "[]<left>")
 map("i", "{", "{}<left>")
-map("i", "<", "<><left>")
 
 map("n", "-", "<cmd>Oil<cr>", with_desc("Open parent directory"))
 map("n", "<leader>fm", ":lua vim.lsp.buf.format()<CR>", opts)
@@ -215,10 +237,16 @@ vim.lsp.config['rust-analyzer'] = {
 	filetypes = { 'rust' },
 	on_attach = attachme,
 }
+vim.lsp.config['bash_ls'] = {
+	cmd = { 'bash-language-server', 'start' },
+	filetypes = { 'sh', 'bash' },
+	on_attach = attachme,
+}
 vim.lsp.enable({
 	'lua_ls',
 	'zls',
 	'rust-analyzer',
+	'bash_ls',
 })
 
 -----------------
