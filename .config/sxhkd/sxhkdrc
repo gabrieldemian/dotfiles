@@ -8,10 +8,10 @@ super + Return
 
 # program launcher
 super + @space
-	dmenu_run
+	rofi -show drun
 
 # make sxhkd reload its configuration files:
-super + Escape
+super + alt + s
 	pkill -USR1 -x sxhkd
 
 #
@@ -83,26 +83,6 @@ super + {o,i}
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
-
-#
-# preselect
-#
-
-# preselect the direction
-# super + ctrl + {h,j,k,l}
-	# bspc node -p {west,south,north,east}
-
-# preselect the ratio
-# super + ctrl + {1-9}
-	# bspc node -o 0.{1-9}
-
-# cancel the preselection for the focused node
-# super + ctrl + space
-	# bspc node -p cancel
-
-# cancel the preselection for the focused desktop
-# super + ctrl + shift + space
-	# bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #
 # move/resize
