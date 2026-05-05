@@ -94,4 +94,4 @@ for p in "${colors[@]}"; do
 done
 
 echo -e "$eww" >"$HOME/dotfiles/.config/eww/colors.scss"
-stow -d "$HOME/dotfiles" -t "$HOME" .
+# stow -d "$HOME/dotfiles" -t "$HOME" .

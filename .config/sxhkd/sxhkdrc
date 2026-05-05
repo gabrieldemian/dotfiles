@@ -22,6 +22,13 @@ super + alt + s
 super + alt + {q,r}
 	bspc {quit,wm -r}
 
+# take screenshot
+Print
+	maim -s | xclip -selection clipboard -t image/png
+
+ctrl + shift + P
+	maim -s | xclip -selection clipboard -t image/png
+
 # close and kill
 super + {_,shift + }w
 	bspc node -{c,k}
