@@ -15,7 +15,7 @@
 	(label :text "CPU ${round(EWW_CPU.avg, 0)}%    ")
     (label :text "    RAM ${round(EWW_RAM.used_mem_perc, 0)}%    ")
 	(label :text "DISK ")
-	(label :text { round((EWW_DISK["/"].free / EWW_DISK["/"].total * 100), 0) + "%    " })
+	(label :text { round((EWW_DISK["/"].used / EWW_DISK["/"].total * 100), 0) + "%    " })
 	(label :text "BAT ${battery}%    ")
     time
 	))
@@ -83,11 +83,13 @@
 
 (defwindow bar
   :monitor 0
-  :windowtype "dock"
+  :stacking "bg"
+  :windowtype "desktop"
+  :wm-ignore false
   :geometry (geometry :x "0%"
                       :y "0%"
                       :width "100%"
-                      :height "1px"
+                      :height "30px"
                       :anchor "top center")
-  :reserve (struts :side "top" :distance "1%")
+  :reserve (struts :side "top" :distance "30px")
   (bar))

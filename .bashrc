@@ -10,7 +10,17 @@ alias grep='grep --color=auto'
 alias get_idf='. $HOME/esp/esp-idf/export.sh'
 alias v='nvim'
 alias vim='nvim'
+alias adog='git log --all --decorate --oneline --graph'
+alias glog='git log --graph --topo-order --pretty="%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N" --abbrev-commit'
+alias glog2='git log --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)" --all'
+alias gs="git status";
+alias gc="git commit -m";
+alias gca="git commit -a -m";
+alias gp="git push";
+alias gpu="git pull origin";
+alias gf="git fetch --all";
 
+export EDITOR="nvim"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -20,7 +30,6 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 export PATH="$PATH:$HOME/zig-x86_64-linux-0.17.0-dev.224+c166c49b1"
 
-export EDITOR="nvim"
 eval "$(direnv hook bash)"
 
 # =============================================================================
