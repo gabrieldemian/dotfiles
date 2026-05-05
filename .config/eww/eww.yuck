@@ -27,8 +27,7 @@
        :space-evenly true
        :halign "start"
        :spacing 14
-    (button :onclick "bspc desktop -f ^1" 1
-		(label :markup wp0 :class "workspace_buttons"))
+    (button :onclick "bspc desktop -f ^1" 1)
     (button :onclick "bspc desktop -f ^2" 2)
     (button :onclick "bspc desktop -f ^3" 3)
     (button :onclick "bspc desktop -f ^4" 4)

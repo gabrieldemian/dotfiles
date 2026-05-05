@@ -6,4 +6,5 @@ exec picom --config /home/gabriel/.config/picom/picom.conf &
 # exec fastcompmgr -o 1 -r 12
 xrdb -merge ~/.Xresources
 xrdb -merge ~/.colors
+eww open bar
 exec bspwm
