@@ -67,7 +67,6 @@ vim.o.wildmenu = true
 vim.o.wildmode = "longest:full,full"
 vim.o.showcmd = true
 vim.o.showmode = false
-
 vim.o.textwidth = 80
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 vim.o.backup = false
@@ -160,8 +159,7 @@ map("i", "{", "{}<left>")
 
 map("n", "-", "<cmd>Oil<cr>", with_desc("Open parent directory"))
 map("n", "<leader>fm", ":lua vim.lsp.buf.format()<CR>", opts)
--- Fix spelling (picks first suggestion)
-map("n", "z0", "1z=", with_desc("Fix word under cursor"))
+map("n", "z0", "1z=", with_desc("Fix spelling under cursor"))
 
 -----------------
 ---- plugins ----
@@ -217,44 +215,17 @@ end
 --- treesitter---
 -----------------
 
-vim.treesitter.language.add(
-	'javascript',
-	{ path = "/home/gabriel/.config/nvim/parser/js.so" }
-)
-vim.treesitter.language.add(
-	'rust',
-	{ path = "/home/gabriel/.config/nvim/parser/rust.so" }
-)
-vim.treesitter.language.add(
-	'zig',
-	{ path = "/home/gabriel/.config/nvim/parser/zig.so" }
-)
-vim.treesitter.language.add(
-	'html',
-	{ path = "/home/gabriel/.config/nvim/parser/html.so" }
-)
-vim.treesitter.language.add(
-	'css',
-	{ path = "/home/gabriel/.config/nvim/parser/css.so" }
-)
-vim.treesitter.language.add(
-	'tsx',
-	{ path = "/home/gabriel/.config/nvim/parser/tsx.so" }
-)
-vim.treesitter.language.add(
-	'typescript',
-	{ path = "/home/gabriel/.config/nvim/parser/ts.so" }
-)
-vim.treesitter.language.register('rust', { 'rust' })
-vim.treesitter.language.register('javascript', { 'js', 'jsx' })
-vim.treesitter.language.register('zig', { 'zig' })
-vim.treesitter.language.register('html', { 'html', 'svg' })
-vim.treesitter.language.register('css', { 'css' })
-vim.treesitter.language.register('tsx', { 'typescriptreact' })
-vim.treesitter.language.register('typescript', { 'typescript' })
+local ln = vim.treesitter.language
+ln.register('rust', { 'rust' })
+ln.register('javascript', { 'javascript', 'javascriptreact' })
+ln.register('zig', { 'zig' })
+ln.register('html', { 'html', 'svg' })
+ln.register('css', { 'css' })
+ln.register('tsx', { 'typescriptreact' })
+ln.register('typescript', { 'typescript' })
 
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = { 'python', 'javascript', 'typescript', 'typescriptreact', 'rust', 'c', 'zig', 'html', 'css' },
+	pattern = { 'rust', 'zig', 'typescript', 'typescriptreact', 'html', 'css' },
 	callback = function()
 		vim.treesitter.start()
 	end,
