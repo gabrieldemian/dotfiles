@@ -1,19 +1,19 @@
 local colors = {
 	black = "#1D1F21",
 	red = "#a54242",
-	green = "#8c9440",
-	yellow = "#de935f",
-	blue = "#8897F4",
-	magenta = "#85678f",
+	green = "#80883b",
+	yellow = "#9f7541",
+	blue = "#55748a",
+	magenta = "#63586e",
 	cyan = "#5e8d87",
-	white = "#707880",
-	black_bright = "#373b41",
+	white = "#6c8080";
+	black_bright = "#40434a",
 	red_bright = "#cc6666",
-	green_bright = "#b5bd68",
-	yellow_bright = "#f0c674",
+	green_bright = "#99a153",
+	yellow_bright = "#b98c55",
 	blue_bright = "#81a2be",
-	magenta_bright = "#b294bb",
-	cyan_bright = "#8abeb7",
-	white_bright = "#c5c8c6",
+	magenta_bright = "#806b86",
+	cyan_bright = "#7fada3";
+	white_bright = "#949997",
 }
 return colors
