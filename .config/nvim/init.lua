@@ -80,7 +80,9 @@ vim.o.maxmempattern = 20000
 
 local colors = require("colors")
 vim.api.nvim_set_hl(0, 'Normal', { bg = colors.black, fg = colors.white })
-vim.api.nvim_set_hl(0, 'PreProc', { fg = colors.cyan })
+vim.api.nvim_set_hl(0, 'Type', { fg = colors.cyan })
+vim.api.nvim_set_hl(0, 'Extmarks', { fg = colors.cyan })
+vim.api.nvim_set_hl(0, 'OilDir', { fg = colors.blue_bright })
 vim.api.nvim_set_hl(0, 'Special', { fg = colors.cyan_bright })
 vim.api.nvim_set_hl(0, 'StatusLine', { bg = colors.black })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = colors.black })
@@ -93,7 +95,6 @@ vim.api.nvim_set_hl(0, 'Comment', { fg = colors.black_bright })
 vim.api.nvim_set_hl(0, 'Function', { fg = colors.blue })
 vim.api.nvim_set_hl(0, 'Number', { fg = colors.magenta_bright })
 vim.api.nvim_set_hl(0, 'Float', { fg = colors.magenta_bright })
-vim.api.nvim_set_hl(0, 'Type', { fg = colors.cyan })
 vim.api.nvim_set_hl(0, 'Statement', { fg = colors.magenta })
 vim.api.nvim_set_hl(0, '@operator', { fg = colors.yellow_bright })
 vim.api.nvim_set_hl(0, 'Identifier', { fg = colors.white_bright })
@@ -212,9 +213,9 @@ for _, v in pairs(servers) do
 	vim.lsp.enable(v[1])
 end
 
------------------
---- treesitter---
------------------
+------------------
+--- treesitter ---
+------------------
 
 local ln = vim.treesitter.language
 ln.register('rust', { 'rust' })
