@@ -109,8 +109,16 @@ super + {Left,Down,Up,Right}
 
 # brightness
 
-XF86MonBrightnessUp 
+XF86MonBrightnessUp
         brightnessctl -d intel_backlight s 5%+
 
-XF86MonBrightnessDown 
+XF86MonBrightnessDown
         brightnessctl -d intel_backlight s 5%-
+
+# volume
+
+XF86Audio{Lower,Raise}Volume
+	wpctl set-volume @DEFAULT_SINK@ .02{-,+}
+
+XF86AudioMute
+	wpctl set-mute @DEFAULT_SINK@ toggle

@@ -36,7 +36,6 @@ for ((i = 0; i < 16; i++)); do
 	alacritty+="$name = \"${color_hex[$i]}\""$'\n'
 done
 
-echo -e "$alacritty"
 printf '%s' "$alacritty" >|"$HOME/dotfiles/.config/alacritty/colors.toml"
 
 # =======
