@@ -46,9 +46,6 @@ vim.o.undofile = true
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
--- vim.wo.breakindent = true
--- vim.treesitter.indent = true
--- vim.bo.autoindent = true
 local statusline = {
 	' %<%f',
 	branch(),
@@ -185,6 +182,16 @@ require("gitsigns").setup()
 ------ lsp ------
 -----------------
 
+local servers = {
+	{ "lua-language-server",  { "lua" },                                  { Lua = { runtime = { version = "LuaJIT" } } }, false },
+	{ "zls",                  { "zig" },                                  { enable_build_on_save = true },                false },
+	{ "rust-analyzer",        { "rust" },                                 {},                                             false },
+	{ "bash-language-server", { "sh", "bash" },                           {},                                             { 'bash-language-server', 'start' } },
+	{ "superhtml",            { "html", "xml" },                          {},                                             { 'superhtml', 'lsp' } },
+	{ "vtsls",                { "typescriptreact", "typescript", "svg" }, {},                                             { 'vtsls', '--stdio' } },
+	{ "svg-language-server",  { "svg" },                                  {},                                             { 'svg-language-server', '--stdio' } },
+};
+
 local function attachme(client, bufnr)
 	vim.lsp.completion.enable(true, client.id, bufnr, {
 		autotrigger = true,
@@ -196,62 +203,15 @@ local function attachme(client, bufnr)
 	map("n", "grd", vim.lsp.buf.definition, opts)
 end
 
-vim.lsp.config['lua_ls'] = {
-	cmd = { 'lua-language-server' },
-	filetypes = { 'lua' },
-	root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git' },
-	on_attach = attachme,
-	settings = {
-		Lua = {
-			runtime = {
-				version = 'LuaJIT',
-			}
-		}
+for _, v in pairs(servers) do
+	vim.lsp.config[v[1]] = {
+		filetypes = v[2],
+		settings = { v[3] },
+		cmd = v[4] or { v[1] },
+		on_attach = attachme,
 	}
-}
-vim.lsp.config['zls'] = {
-	cmd = { 'zls' },
-	filetypes = { 'zig' },
-	on_attach = attachme,
-	settings = {
-		enable_build_on_save = true,
-		warn_style = true
-	}
-}
-vim.lsp.config['rust-analyzer'] = {
-	cmd = { 'rust-analyzer' },
-	filetypes = { 'rust' },
-	on_attach = attachme,
-}
-vim.lsp.config['bash_ls'] = {
-	cmd = { 'bash-language-server', 'start' },
-	filetypes = { 'sh', 'bash' },
-	on_attach = attachme,
-}
-vim.lsp.config['vtsls'] = {
-	cmd = { 'vtsls', '--stdio' },
-	filetypes = { 'typescriptreact', 'typescript', 'svg' },
-	on_attach = attachme,
-}
-vim.lsp.config['html'] = {
-	cmd = { 'superhtml', 'lsp' },
-	filetypes = { 'html', 'xml' },
-	on_attach = attachme,
-}
-vim.lsp.config['svg'] = {
-	cmd = { 'svg-language-server', '--stdio' },
-	filetypes = { 'svg' },
-	on_attach = attachme,
-}
-vim.lsp.enable({
-	'lua_ls',
-	'zls',
-	'rust-analyzer',
-	'bash_ls',
-	'vtsls',
-	'html',
-	'svg',
-})
+	vim.lsp.enable(v[1])
+end
 
 -----------------
 --- treesitter---
