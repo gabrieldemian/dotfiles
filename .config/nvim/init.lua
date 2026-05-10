@@ -71,8 +71,6 @@ vim.o.wildmode = "longest:full,full"
 vim.o.showcmd = true
 vim.o.showmode = false
 
--- Disable clipboard in SSH servers
-vim.o.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 vim.o.textwidth = 80
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 vim.o.backup = false
@@ -113,20 +111,6 @@ vim.api.nvim_set_hl(0, 'Constant', { fg = colors.white_bright })
 vim.api.nvim_set_hl(0, 'TabLine', { bg = colors.black, fg = colors.black_bright })
 vim.api.nvim_set_hl(0, 'TabLineSel', { fg = colors.white })
 
-vim.filetype.add({
-	extension = {
-		env = "dotenv",
-	},
-	filename = {
-		[".env"] = "dotenv",
-		["env"] = "dotenv",
-	},
-	pattern = {
-		["[jt]sconfig.*.json"] = "jsonc",
-		["%.env%.[%w_.-]+"] = "dotenv",
-	},
-})
-
 -------------------
 ----- keymaps -----
 -------------------
@@ -150,6 +134,7 @@ map("n", "fg", ":FzfLua grep_visual<CR>", opts)
 map("n", "fk", ":FzfLua keymaps<CR>", opts)
 map("n", "x", "\"_x", opts)
 map({ "n", "v" }, "<leader>y", "\"+y", opts)
+map({ "n", "v" }, "<leader>p", "\"+p", opts)
 map({ "n", "x" }, "]d", vim.diagnostic.goto_next, with_desc("Next Diagnostic"))
 map({ "n", "x" }, "[d", vim.diagnostic.goto_prev, with_desc("Prev Diagnostic"))
 map("v", "p", '"_dP', opts)
