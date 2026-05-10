@@ -1,1 +1,1 @@
-(jsx_element) @fold
+; inherits: ecma,jsx

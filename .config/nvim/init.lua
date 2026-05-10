@@ -18,7 +18,7 @@ local function smart_enter()
 		local tab = vim.bo.expandtab and ' ' or '\t'
 		local inner = indent .. string.rep(tab, vim.bo.shiftwidth)
 		vim.api.nvim_buf_set_lines(0, vim.fn.line('.') - 1, vim.fn.line('.'), false, {
-			indent .. left,        -- opening bracket + preceding text
+			left,                  -- opening bracket
 			inner,                 -- indented blank line (cursor lands here)
 			indent .. right .. (rest or '') -- closing bracket + everything after
 		})
@@ -207,7 +207,8 @@ local function attachme(client, bufnr)
 			return { abbr = item.label:gsub("%b()", "") }
 		end,
 	})
-	vim.keymap.set("i", "<C-space>", vim.lsp.completion.get, { desc = "trigger autocompletion" })
+	map("i", "<C-space>", vim.lsp.completion.get, { desc = "trigger autocompletion" })
+	map("n", "grd", vim.lsp.buf.definition, opts)
 end
 
 vim.lsp.config['lua_ls'] = {
@@ -242,11 +243,29 @@ vim.lsp.config['bash_ls'] = {
 	filetypes = { 'sh', 'bash' },
 	on_attach = attachme,
 }
+vim.lsp.config['vtsls'] = {
+	cmd = { 'vtsls', '--stdio' },
+	filetypes = { 'typescriptreact', 'typescript', 'svg' },
+	on_attach = attachme,
+}
+vim.lsp.config['html'] = {
+	cmd = { 'superhtml', 'lsp' },
+	filetypes = { 'html', 'xml' },
+	on_attach = attachme,
+}
+vim.lsp.config['svg'] = {
+	cmd = { 'svg-language-server', '--stdio' },
+	filetypes = { 'svg' },
+	on_attach = attachme,
+}
 vim.lsp.enable({
 	'lua_ls',
 	'zls',
 	'rust-analyzer',
 	'bash_ls',
+	'vtsls',
+	'html',
+	'svg',
 })
 
 -----------------
@@ -284,7 +303,7 @@ vim.treesitter.language.add(
 vim.treesitter.language.register('rust', { 'rust' })
 vim.treesitter.language.register('javascript', { 'js', 'jsx' })
 vim.treesitter.language.register('zig', { 'zig' })
-vim.treesitter.language.register('html', { 'html' })
+vim.treesitter.language.register('html', { 'html', 'svg' })
 vim.treesitter.language.register('css', { 'css' })
 vim.treesitter.language.register('tsx', { 'typescriptreact' })
 vim.treesitter.language.register('typescript', { 'typescript' })
