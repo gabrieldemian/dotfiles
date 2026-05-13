@@ -143,14 +143,14 @@ map({ "i", "c" }, "<C-k>", "<Up>", opts)
 map({ "i", "c" }, "<C-l>", "<Right>", opts)
 
 -- git signs
-map("n", "<leader>gsh", ':Gitsigns stage_hunk<cr>', opts)
-map("n", "<leader>gSh", ':Gitsigns undo_stage_hunk<cr>', opts)
-map("n", "<leader>gsb", ':Gitsigns stage_buffer<cr>', opts)
-map("n", "<leader>gSb", ':Gitsigns undo_stage_buffer<cr>', opts)
-map("n", "<leader>grb", ':Gitsigns reset_buffer<cr>', opts)
-map("n", "<leader>grh", ':Gitsigns reset_hunk<cr>', opts)
-map("n", "<leader>gph", ':Gitsigns preview_hunk<cr>', opts)
-map("n", "<leader>gd", ':Gitsigns diff_this<cr>', opts)
+map({ "n", "v" }, "<leader>gsh", ':Gitsigns stage_hunk<CR>', opts)
+map("n", "<leader>gSh", ':Gitsigns undo_stage_hunk<CR>', opts)
+map("n", "<leader>gsb", ':Gitsigns stage_buffer<CR>', opts)
+map("n", "<leader>gSb", ':Gitsigns undo_stage_buffer<CR>', opts)
+map("n", "<leader>grb", ':Gitsigns reset_buffer<CR>', opts)
+map({ "n", "v" }, "<leader>grh", ':Gitsigns reset_hunk<CR>', opts)
+map("n", "<leader>gph", ':Gitsigns preview_hunk<CR>', opts)
+map({ "n", "v" }, "<leader>gd", ':Gitsigns diff_this<CR>', opts)
 
 -- auto close pairs
 map("i", "`", "``<left>")
