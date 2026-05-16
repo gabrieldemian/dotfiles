@@ -110,6 +110,20 @@ vim.api.nvim_set_hl(0, 'Error', { fg = colors.red })
 vim.api.nvim_set_hl(0, 'TabLine', { bg = colors.black, fg = colors.black_bright })
 vim.api.nvim_set_hl(0, 'TabLineSel', { fg = colors.white })
 
+-----------------
+---- plugins ----
+-----------------
+
+vim.pack.add({
+	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/dmtrKovalenko/fff.nvim" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
+})
+require("mason").setup({})
+require("oil").setup()
+require("gitsigns").setup()
+
 -------------------
 ----- keymaps -----
 -------------------
@@ -128,9 +142,8 @@ map("n", "<Tab>", ":tabnext<CR>", with_desc("Next tab"))
 map("n", "<S-Tab>", ":tabprev<CR>", with_desc("Previous tab"))
 map("n", "<C-Tab>", ":bn<CR>", with_desc("Next buffer"))
 map("n", "<leader>fzf", ":FzfLua<CR>", opts)
-map("n", "ff", ":FzfLua files<CR>", opts)
-map("n", "fg", ":FzfLua grep_visual<CR>", opts)
-map("n", "fk", ":FzfLua keymaps<CR>", opts)
+map('n', 'ff', function() require('fff').find_files() end, with_desc("Find files"))
+map('n', 'fg', function() require('fff').live_grep() end, with_desc("Grep"))
 map("n", "x", "\"_x", opts)
 map({ "n", "v" }, "<leader>y", "\"+y", opts)
 map({ "n", "v" }, "<leader>p", "\"+p", opts)
@@ -163,21 +176,6 @@ map("i", "{", "{}<left>")
 map("n", "-", "<cmd>Oil<cr>", with_desc("Open parent directory"))
 map("n", "<leader>fm", ":lua vim.lsp.buf.format()<CR>", opts)
 map("n", "z0", "1z=", with_desc("Fix spelling under cursor"))
-
------------------
----- plugins ----
------------------
-
-vim.pack.add({
-	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/stevearc/oil.nvim" },
-	{ src = "https://github.com/ibhagwan/fzf-lua" },
-	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
-})
-require("mason").setup({})
-require("oil").setup()
-require("fzf-lua").setup()
-require("gitsigns").setup()
 
 -----------------
 ------ lsp ------
