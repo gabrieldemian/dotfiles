@@ -52,10 +52,6 @@ window {
   color: $cyan;
 }
 
-.workspaces .workspace.active {
+.workspaces button.button-active {
   color: $yellow;
-}
-
-.workspaces .workspace.empty {
-  color: $blackbright;
 }

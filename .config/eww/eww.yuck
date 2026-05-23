@@ -21,15 +21,27 @@
        :space-evenly true
        :halign "start"
        :spacing 14
-    (button :onclick "bspc desktop -f ^1" 1)
-    (button :onclick "bspc desktop -f ^2" 2)
-    (button :onclick "bspc desktop -f ^3" 3)
-    (button :onclick "bspc desktop -f ^4" 4)
-    (button :onclick "bspc desktop -f ^5" 5)
-    (button :onclick "bspc desktop -f ^6" 6)
-    (button :onclick "bspc desktop -f ^7" 7)
-    (button :onclick "bspc desktop -f ^8" 8)
-    (button :onclick "bspc desktop -f ^9" 9)))
+(button :class {active_workspace == "I" ? "button-active" : ""}
+            :onclick "bspc desktop -f ^1" "1")
+    (button :class {active_workspace == "II" ? "button-active" : ""}
+            :onclick "bspc desktop -f ^2" "2")
+    (button :class {active_workspace == "III" ? "button-active" : ""}
+            :onclick "bspc desktop -f ^3" "3")
+    (button :class {active_workspace == "IV" ? "button-active" : ""}
+            :onclick "bspc desktop -f ^4" "4")
+    (button :class {active_workspace == "V" ? "button-active" : ""}
+            :onclick "bspc desktop -f ^5" "5")
+    (button :class {active_workspace == "VI" ? "button-active" : ""}
+            :onclick "bspc desktop -f ^6" "6")
+    (button :class {active_workspace == "VII" ? "button-active" : ""}
+            :onclick "bspc desktop -f ^7" "7")
+    (button :class {active_workspace == "VIII" ? "button-active" : ""}
+            :onclick "bspc desktop -f ^8" "8")
+    (button :class {active_workspace == "IX" ? "button-active" : ""}
+            :onclick "bspc desktop -f ^9" "9")))
+
+(defpoll active_workspace :interval "1s" :initial ""
+  "bspc query -D -d focused --names")
 
 (defwidget music []
   (box :class "music"
@@ -58,17 +70,6 @@
 
 (defpoll battery :interval "10s"
   "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo 'N/A'")
-
-(defpoll bspwm_workspaces :interval "0.5s"
-  `bspc query -D --names | while read -r name; do
-     if [ "$name" = "$(bspc query -D -d focused --names)" ]; then
-       state="active"
-     else
-       state="inactive"
-     fi
-     occupied=$(bspc query -D -d "$name" --windows | wc -l)
-     printf '{"id":"%s","active":%s,"occupied":%d}\n' "$name" "$([ "$state" = "active" ] && echo true || echo false)" "$occupied"
-   done | jq -s -c .`)
 
 (defwindow bar
   :monitor 0

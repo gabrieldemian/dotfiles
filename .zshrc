@@ -7,7 +7,7 @@ export PATH="$PATH:$HOME/zig-x86_64-linux-0.17.0-dev.224+c166c49b1"
 export ZSH="$HOME/.oh-my-zsh"
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="cloud"
+ZSH_THEME="minimal"
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
