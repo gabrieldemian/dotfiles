@@ -8,18 +8,12 @@
 
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-    (metric :label "🔊"
-            :value volume
-            :onchange "wpctl set-volume @DEFAULT_SINK@ {}%")
-	(label :text "⠿⠿⠿  ")
 	(label :text "CPU ${round(EWW_CPU.avg, 0)}%    ")
     (label :text "    RAM ${round(EWW_RAM.used_mem_perc, 0)}%    ")
 	(label :text "DISK ")
 	(label :text { round((EWW_DISK["/"].used / EWW_DISK["/"].total * 100), 0) + "%    " })
 	(label :text "BAT ${battery}%    ")
-    time
-	))
-
+    time))
 
 (defwidget workspaces []
   (box :class "workspaces"
@@ -56,16 +50,11 @@
            :value value
            :onchange onchange)))
 
-
-
 (deflisten music :initial ""
   "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 
-(defpoll volume :interval "1s"
-  "scripts/getvol.sh")
-
 (defpoll time :interval "10s"
-  "date '+%H:%M ⠛ %d/%m'")
+  "date '+%d/%m ⠛ %H:%M'")
 
 (defpoll battery :interval "10s"
   "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo 'N/A'")
