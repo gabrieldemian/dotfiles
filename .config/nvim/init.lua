@@ -15,8 +15,7 @@ local function smart_enter()
 	local pairs       = { ['{'] = '}', ['('] = ')', ['['] = ']', ['<'] = '>' }
 	if left and right and pairs[left:sub(-1)] == right then
 		local indent = line:match('^%s*')
-		local tab = vim.bo.expandtab and ' ' or '\t'
-		local inner = indent .. string.rep(tab, vim.bo.shiftwidth)
+		local inner = indent .. '\t'
 		vim.api.nvim_buf_set_lines(0, vim.fn.line('.') - 1, vim.fn.line('.'), false, {
 			left,                  -- opening bracket
 			inner,                 -- indented blank line (cursor lands here)
@@ -100,6 +99,7 @@ vim.api.nvim_set_hl(0, '@operator', { fg = colors.yellow_bright })
 vim.api.nvim_set_hl(0, 'Identifier', { fg = colors.white_bright })
 vim.api.nvim_set_hl(0, 'Define', { fg = colors.white_bright })
 vim.api.nvim_set_hl(0, 'Delimiter', { fg = colors.white_bright })
+vim.api.nvim_set_hl(0, 'Title', { fg = colors.yellow_bright })
 vim.api.nvim_set_hl(0, 'Operator', { fg = colors.white_bright })
 vim.api.nvim_set_hl(0, 'Constant', { fg = colors.white_bright })
 vim.api.nvim_set_hl(0, '@variable', { fg = colors.white_bright })
