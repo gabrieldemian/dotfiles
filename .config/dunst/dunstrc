@@ -1,0 +1,23 @@
+[global]
+	width = (400, 800)
+	height = (100, 200)
+	gap_size = 10
+	font = Pixel Code 15
+	padding = 20
+	horizontal_padding = 20
+	timeout = 5
+
+[urgency_low]
+	background = "#1D1F21"
+	foreground = "#8f8b8b"
+	frame_color = "#8c8c8c"
+
+[urgency_normal]
+	background = "#1D1F21"
+	foreground = "#8f8b8b"
+	frame_color = "#8c8c8c"
+
+[urgency_critical]
+	background = "#1D1F21"
+	foreground = "#a54242"
+	frame_color = "#a54242"
