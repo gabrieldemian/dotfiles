@@ -182,6 +182,7 @@ map("n", "z0", "1z=", with_desc("Fix spelling under cursor"))
 -----------------
 
 local servers = {
+	-- lsp, filetypes, settings, cmd
 	{ "lua-language-server",  { "lua" },                                  { Lua = { runtime = { version = "LuaJIT" } } }, false },
 	{ "zls",                  { "zig" },                                  { enable_build_on_save = true },                false },
 	{ "rust-analyzer",        { "rust" },                                 {},                                             false },
@@ -208,6 +209,7 @@ for _, v in pairs(servers) do
 		settings = { v[3] },
 		cmd = v[4] or { v[1] },
 		on_attach = attachme,
+		root_markers = { 'build.zig' },
 	}
 	vim.lsp.enable(v[1])
 end

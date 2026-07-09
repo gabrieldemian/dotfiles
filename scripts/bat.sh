@@ -6,7 +6,7 @@ while true; do
 	per=$(awk "BEGIN {printf \"%.f\",${curr}/${total}*100}")
 	batstatus=$(cat /sys/class/power_supply/BAT0/status)
 	if [ "$batstatus" == "Discharging" ]; then
-		if [ $per -lt 25 ]; then
+		if [ $per -lt 20 ]; then
 			notify-send "low battery (⇀‸↼‶)" -u critical
 		fi
 	fi
