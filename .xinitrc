@@ -11,3 +11,4 @@ exec dunst &
 exec ~/dotfiles/scripts/bat.sh &
 xsetroot -cursor_name left_ptr
 exec bspwm
+exec redshift &
