@@ -183,13 +183,12 @@ map("n", "z0", "1z=", with_desc("Fix spelling under cursor"))
 
 local servers = {
 	-- lsp, filetypes, settings, cmd
-	{ "lua-language-server",  { "lua" },                                  { Lua = { runtime = { version = "LuaJIT" } } }, false },
-	{ "zls",                  { "zig" },                                  { enable_build_on_save = true },                false },
-	{ "rust-analyzer",        { "rust" },                                 {},                                             false },
-	{ "bash-language-server", { "sh", "bash" },                           {},                                             { 'bash-language-server', 'start' } },
-	{ "superhtml",            { "html", "xml" },                          {},                                             { 'superhtml', 'lsp' } },
-	{ "vtsls",                { "typescriptreact", "typescript", "svg" }, {},                                             { 'vtsls', '--stdio' } },
-	{ "svg-language-server",  { "svg" },                                  {},                                             { 'svg-language-server', '--stdio' } },
+	{ "lua-language-server",  { "lua" },                                                        { Lua = { runtime = { version = "LuaJIT" } } }, false },
+	{ "zls",                  { "zig" },                                                        { enable_build_on_save = true },                false },
+	{ "rust-analyzer",        { "rust" },                                                       {},                                             false },
+	{ "bash-language-server", { "sh", "bash" },                                                 {},                                             { 'bash-language-server', 'start' } },
+	{ "superhtml",            { "html", "xml" },                                                {},                                             { 'superhtml', 'lsp' } },
+	{ "biome",                { "javascript", "typescript", "typescriptreact", "json", "css" }, {},                                             { 'biome', 'lsp-proxy' } },
 };
 
 local function attachme(client, bufnr)
@@ -204,13 +203,14 @@ local function attachme(client, bufnr)
 end
 
 for _, v in pairs(servers) do
-	vim.lsp.config[v[1]] = {
+	local table = {
 		filetypes = v[2],
 		settings = { v[3] },
 		cmd = v[4] or { v[1] },
 		on_attach = attachme,
-		root_markers = { 'build.zig' },
+		-- root_markers = { 'build.zig' },
 	}
+	vim.lsp.config[v[1]] = table
 	vim.lsp.enable(v[1])
 end
 
