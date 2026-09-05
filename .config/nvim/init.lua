@@ -189,6 +189,7 @@ local servers = {
 	{ "bash-language-server", { "sh", "bash" },                                                 {},                                             { 'bash-language-server', 'start' } },
 	{ "superhtml",            { "html", "xml" },                                                {},                                             { 'superhtml', 'lsp' } },
 	{ "biome",                { "javascript", "typescript", "typescriptreact", "json", "css" }, {},                                             { 'biome', 'lsp-proxy' } },
+	{ "clangd",               { "c" },                                                          {},                                             { 'clangd', '--background-index' } },
 };
 
 local function attachme(client, bufnr)
