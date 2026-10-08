@@ -20,8 +20,8 @@ opacity = 1
 
 [keyboard]
 bindings = [
-    { key="k", mods="Control", action="ScrollLineUp" },
-    { key="j", mods="Control", action="ScrollLineDown" },
+    # { key="k", mods="Control", action="ScrollLineUp" },
+    # { key="j", mods="Control", action="ScrollLineDown" },
 
     { key="k", mods="Control|Shift", action="ScrollHalfPageUp" },
     { key="j", mods="Control|Shift", action="ScrollHalfPageDown" },
@@ -29,5 +29,5 @@ bindings = [
     { key="g", mods="Control|Shift", action="ScrollToBottom" },
     { key="g", mods="Control", action="ScrollToTop" },
 
-    { key="s", mods="Control", action="SearchForward" },
+    { key="s", mods="Control|Shift", action="SearchForward" },
 ]
