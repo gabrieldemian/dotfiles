@@ -1,10 +1,8 @@
-((comment) @injection.content
-  (#set! injection.language "comment"))
+; Markdown injections in doc comments
+((doc_comment) @injection.content
+  (#set! injection.language "markdown")
+  (#set! injection.include-children))
 
-; TODO: add when asm is added
-; (asm_output_item (string) @injection.content
-;   (#set! injection.language "asm"))
-; (asm_input_item (string) @injection.content
-;   (#set! injection.language "asm"))
-; (asm_clobbers (string) @injection.content
-;   (#set! injection.language "asm"))
+((container_doc_comment) @injection.content
+  (#set! injection.language "markdown")
+  (#set! injection.include-children))

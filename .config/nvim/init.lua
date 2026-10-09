@@ -7,24 +7,33 @@ local function branch()
 	return "     " .. branch
 end
 
+local delims = {
+	["("] = ")",
+	["["] = "]",
+	["{"] = "}",
+	["'"] = "'",
+	['"'] = '"',
+}
+
 local function smart_enter()
 	local line        = vim.fn.getline('.')
 	local col         = vim.fn.col('.')
 	local left        = line:sub(1, col - 1):match('^(.*%S)%s*$')
 	local right, rest = line:sub(col):match('^%s*(%S)(.*)')
-	local pairs       = { ['{'] = '}', ['('] = ')', ['['] = ']', ['<'] = '>' }
-	if left and right and pairs[left:sub(-1)] == right then
-		local indent = line:match('^%s*')
-		local inner = indent .. '\t'
-		vim.api.nvim_buf_set_lines(0, vim.fn.line('.') - 1, vim.fn.line('.'), false, {
-			left,                  -- opening bracket
-			inner,                 -- indented blank line (cursor lands here)
-			indent .. right .. (rest or '') -- closing bracket + everything after
-		})
-		vim.api.nvim_win_set_cursor(0, { vim.fn.line('.') + 1, #inner + 1 })
-		return
+	if left and right then
+		local open, close = left:sub(-1), right
+		if open ~= close and delims[open] == close then
+			local indent = line:match('^%s*')
+			local inner = indent .. '\t'
+			vim.api.nvim_buf_set_lines(0, vim.fn.line('.') - 1, vim.fn.line('.'), false, {
+				left,
+				inner,
+				indent .. right .. (rest or '')
+			})
+			vim.api.nvim_win_set_cursor(0, { vim.fn.line('.') + 1, #inner + 1 })
+			return
+		end
 	end
-	-- normal enter
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<CR>', true, true, true), 'n', true)
 end
 
@@ -52,7 +61,6 @@ local statusline = {
 	'%=',
 	'',
 	'%{&filetype}',
-	'  0x%B',
 	' %2p%%',
 	' %3l:%-2c '
 }
@@ -165,13 +173,68 @@ map({ "n", "v" }, "<leader>grh", ':Gitsigns reset_hunk<CR>', opts)
 map("n", "<leader>gph", ':Gitsigns preview_hunk<CR>', opts)
 map({ "n", "v" }, "<leader>gd", ':Gitsigns diff_this<CR>', opts)
 
--- auto close pairs
-map("i", "`", "``<left>")
-map("i", '"', '""<left>')
-map("i", "'", "''<left>")
-map("i", "(", "()<left>")
-map("i", "[", "[]<left>")
-map("i", "{", "{}<left>")
+-- logic to handle opening and closing delimiters ( [ {
+
+local function context()
+	local ok, parser = pcall(vim.treesitter.get_parser, 0)
+	if not ok or not parser then return nil end
+	local tree = parser:parse()[1]
+	if not tree then return nil end
+	local pos = vim.api.nvim_win_get_cursor(0)
+	local row, col = pos[1] - 1, pos[2]
+	local node = tree:root():descendant_for_range(row, col, row, col)
+	while node do
+		local t = node:type()
+		if t:find("string") then return "string" end
+		if t:find("comment") then return "comment" end
+		node = node:parent()
+	end
+	return nil
+end
+
+local function balance(open, close)
+	local ob, cb = open:byte(), close:byte()
+	local n = 0
+	for _, line in ipairs(vim.api.nvim_buf_get_lines(0, 0, -1, false)) do
+		for i = 1, #line do
+			local b = line:byte(i)
+			if b == ob then
+				n = n + 1
+			elseif b == cb then
+				n = n - 1
+			end
+		end
+	end
+	return n
+end
+
+for open, close in pairs(delims) do
+	vim.keymap.set("i", open, function()
+		local ctx = context()
+		if ctx == "comment" then return open end
+
+		if open == close then
+			if ctx == "string" then return open end
+			local line = vim.api.nvim_get_current_line()
+			local col = vim.api.nvim_win_get_cursor(0)[2]
+			if line:sub(col + 1, col + 1) == close then return "<Right>" end
+			return open .. close .. "<Left>"
+		end
+
+		if balance(open, close) >= 0 then
+			return open .. close .. "<Left>"
+		end
+		return open
+	end, { expr = true, desc = "Autopair " .. open })
+end
+
+for _, close in ipairs({ ")", "]", "}" }) do
+	vim.keymap.set("i", close, function()
+		local line = vim.api.nvim_get_current_line()
+		local col = vim.api.nvim_win_get_cursor(0)[2]
+		return line:sub(col + 1, col + 1) == close and "<Right>" or close
+	end, { expr = true, desc = "Autoclose " .. close })
+end
 
 map("n", "-", "<cmd>Oil<cr>", with_desc("Open parent directory"))
 map("n", "<leader>fm", ":lua vim.lsp.buf.format()<CR>", opts)
@@ -227,9 +290,10 @@ ln.register('html', { 'html', 'svg' })
 ln.register('css', { 'css' })
 ln.register('tsx', { 'typescriptreact' })
 ln.register('typescript', { 'typescript' })
+ln.register('c', { 'c', 'h' })
 
 vim.api.nvim_create_autocmd('FileType', {
-	pattern = { 'rust', 'zig', 'typescript', 'typescriptreact', 'html', 'css' },
+	pattern = { 'rust', 'zig', 'typescript', 'typescriptreact', 'html', 'css', 'c' },
 	callback = function()
 		vim.treesitter.start()
 	end,
