@@ -32,7 +32,8 @@ else
   export EDITOR='nvim'
 fi
 
-alias l='ls -Alch --color=auto'
+alias l='ls --color=auto'
+alias ll='ls -Alch --color=auto'
 alias grep='grep --color=auto'
 alias get_idf='. $HOME/esp/esp-idf/export.sh'
 alias v='nvim'
