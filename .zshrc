@@ -1,10 +1,10 @@
 export PATH="$PATH:$HOME/bin:$HOME/.local/bin:/usr/local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
-export PATH="$PATH:$HOME/zig-x86_64-linux-0.17.0-dev.813+2153f8143"
-export PATH="$PATH:$HOME/Downloads/binaryen-version_130/bin"
 
-export WASI_SDK_PATH="/home/gabriel/Downloads/wasi-sdk-33.0-x86_64-linux"
+export WASI_SDK_PATH="$HOME/opt/wasi-sdk-33"
+export PATH="$PATH:$HOME/opt/zig-x86_64-linux-0.17.0"
+export PATH="$PATH:$HOME/opt/binaryen-130/bin"
 export CC_wasm32_wasip1="$WASI_SDK_PATH/bin/clang --sysroot=${WASI_SDK_PATH}/share/wasi-sysroot"
 
 export ZSH="$HOME/.oh-my-zsh"
