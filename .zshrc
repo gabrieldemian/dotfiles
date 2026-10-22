@@ -7,6 +7,7 @@ export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 export WASI_SDK_PATH="$HOME/opt/wasi-sdk-33"
 export PATH="$PATH:$HOME/opt/zig-x86_64-linux-0.17.0"
 export PATH="$PATH:$HOME/opt/binaryen-130/bin"
+export PATH="$PATH:$HOME/opt"
 export CC_wasm32_wasip1="$WASI_SDK_PATH/bin/clang --sysroot=${WASI_SDK_PATH}/share/wasi-sysroot"
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -44,7 +45,8 @@ alias glog2='git log --graph --topo-order --pretty="%w(100,0,6)%C(yellow)%h%C(bo
 alias gs="git status";
 alias gc="git commit -m";
 alias gca="git commit -a -m";
-alias gp="git push";
+alias gp="git pull";
+alias gP="git push";
 alias gpu="git pull origin";
 alias gf="git fetch --all";
 

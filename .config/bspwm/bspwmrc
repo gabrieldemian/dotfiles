@@ -4,6 +4,9 @@ pgrep -x sxhkd >/dev/null || sxhkd &
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
+bspc rule -a '*' desktop='^1$' state=tiled
+bspc rule -a '*' desktop='^[2-9]$' state=pseudo_tiled
+
 bspc config window_gap 12
 bspc config top_padding 30
 

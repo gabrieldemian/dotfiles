@@ -13,6 +13,7 @@ italic = { family = "Pixel Code" }
 bold_italic = { family = "Pixel Code" }
 
 [window]
+dimensions = { columns = 90, lines = 55 }
 padding.x = 5
 padding.y = 5
 dynamic_padding = true
