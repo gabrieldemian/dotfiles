@@ -27,8 +27,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 export PATH="$PATH:$HOME/.cargo/bin"
+# export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib"
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
-export PATH="$PATH:$HOME/zig-x86_64-linux-0.17.0-dev.224+c166c49b1"
 
 eval "$(direnv hook bash)"
 

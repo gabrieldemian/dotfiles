@@ -126,10 +126,10 @@ vim.api.nvim_set_hl(0, 'TabLineSel', { fg = colors.white })
 -----------------
 
 vim.pack.add({
-	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/stevearc/oil.nvim" },
-	{ src = "https://github.com/dmtrKovalenko/fff.nvim" },
-	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
+	"https://github.com/mason-org/mason.nvim",
+	"https://github.com/stevearc/oil.nvim",
+	"https://github.com/dmtrKovalenko/fff.nvim",
+	"https://github.com/lewis6991/gitsigns.nvim",
 })
 require("mason").setup()
 require("oil").setup()
@@ -164,8 +164,9 @@ map('n', 'fg', function() require('fff').live_grep() end, with_desc("Grep"))
 map("n", "x", "\"_x", opts)
 map({ "n", "v" }, "<leader>y", "\"+y", opts)
 map({ "n", "v" }, "<leader>p", "\"+p", opts)
-map({ "n", "x" }, "<C-j>", vim.diagnostic.goto_next, with_desc("Next Diagnostic"))
-map({ "n", "x" }, "<C-k>", vim.diagnostic.goto_prev, with_desc("Prev Diagnostic"))
+map({ "n", "x" }, "<C-j>", function() vim.diagnostic.jump { count = 1, float = true } end, with_desc("Next Diagnostic"))
+map({ "n", "x" }, "<C-k>", function() vim.diagnostic.jump { count = -1, float = true } end,
+	with_desc("Prev Diagnostic"))
 map("v", "p", '"_dP', opts)
 map({ "i", "c" }, "<C-h>", "<Left>", opts)
 map({ "i", "c" }, "<C-j>", "<Down>", opts)
@@ -193,7 +194,8 @@ map("n", "z0", "1z=", with_desc("Fix spelling under cursor"))
 local servers = {
 	-- lsp, filetypes, settings, cmd
 	{ "lua-language-server",  { "lua" },                                                        { Lua = { runtime = { version = "LuaJIT" } } }, false },
-	{ "zls",                  { "zig" },                                                        { enable_build_on_save = true },                false },
+	-- { "zigscient",            { "zig" },                                                        nil,                                            { "/home/gabriel/.local/bin/zigscient" } },
+	{ "zls",                  { "zig" },                                                        { zls = { force_autofix = true } },             false },
 	{ "rust-analyzer",        { "rust" },                                                       {},                                             false },
 	{ "bash-language-server", { "sh", "bash" },                                                 {},                                             { 'bash-language-server', 'start' } },
 	{ "superhtml",            { "html", "xml" },                                                {},                                             { 'superhtml', 'lsp' } },
@@ -218,11 +220,21 @@ for _, v in pairs(servers) do
 		settings = { v[3] },
 		cmd = v[4] or { v[1] },
 		on_attach = attachme,
-		-- root_markers = { 'build.zig' },
+		root_markers = { 'build.zig' },
 	}
 	vim.lsp.config[v[1]] = table
 	vim.lsp.enable(v[1])
 end
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+	pattern = { "*.zig", "*.zon" },
+	callback = function(ev)
+		vim.lsp.buf.code_action({
+			context = { only = { "source.fixAll" } },
+			apply = true,
+		})
+	end
+})
 
 ------------------
 --- treesitter ---

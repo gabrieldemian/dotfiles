@@ -19,6 +19,10 @@
     "oil.nvim": {
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
       "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "zig.vim": {
+      "rev": "3004232f7432a3d38d2a1a824f89dedac9bb841b",
+      "src": "https://codeberg.org/ziglang/zig.vim"
     }
   }
 }

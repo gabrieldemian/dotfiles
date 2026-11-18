@@ -1,13 +1,25 @@
-window-decoration = none
-font-size = 15.0
+font-size = 17.0
 font-family = Pixel Code
 font-family-bold = Pixel Code
 font-family-italic = Pixel Code
 font-family-bold-italic = Pixel Code
+
+window-decoration = none
 window-padding-x = 10
 window-padding-y = 10
 window-padding-balance = true
-theme = main
+window-width = 90
+window-height = 55
+
 cursor-style-blink = false
 cursor-style = block
+
 shell-integration-features = no-cursor
+theme = main
+palette-generate = true
+
+keybind = super+ctrl+l=new_split:right
+keybind = super+shift+ctrl+l=goto_split:right
+keybind = super+shift+ctrl+h=goto_split:left
+keybind = super+shift+ctrl+j=goto_split:down
+keybind = super+shift+ctrl+k=goto_split:up
